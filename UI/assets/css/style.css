@@ -2,9 +2,12 @@
   margin: 0;
   padding: 0;
 }
+html,
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
 .banner {
@@ -16,7 +19,7 @@ body {
 .inner-header {
   background: url("../img/iheader.jpg");
   max-width: 100%;
-  max-height: 200px;
+  min-height: 150px;
 }
 .btn {
   background-color: #15549a;
@@ -107,6 +110,16 @@ body {
   font-size: 1.2em;
   width: 50%;
 }
+article {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
 .main {
   text-align: center;
   padding-top: 30px;
@@ -137,6 +150,8 @@ body {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   padding-top: 3%;
+  min-height: 100%;
+  align-items: stretch;
 }
 .circle {
   background-color: #e3f0fe;
@@ -185,11 +200,26 @@ body {
   font-style: italic;
   line-height: 32px;
 }
-.testimonial-autor { padding-top: 15px; padding-bottom: 12px; }
-.testimonial-name { color: #fff; line-height: 1; margin-bottom: 5px; }
-.testimonial-title { color: #f51f8a; margin-bottom: 0px; }
-.testimonial-img { float: left; padding-right: 29px; }
-.testimonial-meta { font-size: 12px; }
+.testimonial-autor {
+  padding-top: 15px;
+  padding-bottom: 12px;
+}
+.testimonial-name {
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.testimonial-title {
+  color: #f51f8a;
+  margin-bottom: 0px;
+}
+.testimonial-img {
+  float: left;
+  padding-right: 29px;
+}
+.testimonial-meta {
+  font-size: 12px;
+}
 .testimonial-content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -224,6 +254,7 @@ footer {
   color: #fff;
   background-color: #1e2127;
   padding: 10px;
+  flex-shrink: 0;
 }
 .footer-widget {
   -webkit-box-flex: 1;
@@ -240,6 +271,79 @@ footer {
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+}
+#login-form{
+  text-align: center;
+  padding: 50px 0px 50px 0px;
+  border: 1px solid #dee4ee;
+  -webkit-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+  -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+  box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+}
+.login-flex-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 5%;
+}
+.signup-flex-container{
+  display: flex;
+  flex-direction: column;
+}
+.login-main-content{
+    background: ffffff;
+    flex:1;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.login-form p{
+  margin: 0;
+  padding-top: 2%;
+}
+
+.login-form input{
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+
+.login-form input[type="text"], input[type="email"], input[type="password"]{
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  background: #fff;
+  outline: none;
+  height: 40px;
+  color: #000;
+  font-size: 16px;
+  border: 1px solid #dee4ee;
+  padding-left: 10px;
+}
+.login-form input[type="submit"]{
+  max-width: 50%;
+  border: none;
+  outline: none;
+  background: #15549a;
+  color: #ffffff;
+  font-size: 18px;
+  height: 30px;
+  border-radius:5px;
+}
+
+.login-form input[type="submit"]:hover{
+  cursor: pointer;
+  background: #0096db;
+  color: #000000;
+}
+.login-form a{
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: #15549a;
+}
+
+.login-form a:hover{
+  color: #e8491d;
 }
 @media all and (max-width: 500px) {
   html {
@@ -325,7 +429,7 @@ footer {
     flex-direction: column;
   }
   .testimonial1 {
-    padding: 5%
+    padding: 5%;
   }
   .main1 {
     margin-top: 40px;
