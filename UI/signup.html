@@ -31,20 +31,31 @@
         <div class="login-main-content">
           <div id="login-form">
             <form id="signForm" class="login-form" onsubmit="return false;">
-              <h1>Welcome Back</h1>
+              <h1>Sign up Here</h1>
               <p>
-                Sign in to your account to get started.
+                Fill in your Details to Get Started
               </p>
               <p id="errorlog" class="warning"></p>
               <br />
-              <input type="text" id="email" placeholder="Enter Your Email" required />
-              <input type="password" id="password" placeholder="Enter Password" required />
-              <input type="submit" id="loginBtn" value="Signin" />
+              <div class="signup-field">
+                <div class="signup1">
+                  <input type="text" id="fname" placeholder="First Name" required />
+                  <input type="text" id="address" placeholder="Address" required />
+                  <input type="text" id="phoneno" placeholder="Mobile No." required />
+                  <input type="password" id="password" placeholder="Password" required />
+                </div>
+                <div class="signup1">
+                  <input type="text" id="lname" placeholder="Last Name" required />
+                  <input type="email" id="email" placeholder="E-mail" required />
+                  <input type="text" id="username" placeholder="Username" required />
+                  <input type="password" id="cpassword" placeholder="Confirm Password" required />
+                </div>
+              </div>
+              <input type="submit" id="signupBtn" value="Signup" required />
               <p>
-                Having trouble logging in?
-                <a href="forgot_password.html">Forgot Password</a>
+                Already have an account?
+                <a href="signin.html"> Sign In</a>
               </p>
-              <p>Do have an account yet? <a href="signup.html">Sign Up</a></p>
             </form>
           </div>
         </div>
