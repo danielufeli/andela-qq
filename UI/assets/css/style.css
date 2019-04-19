@@ -272,7 +272,7 @@ footer {
   padding-bottom: 10px;
   text-align: center;
 }
-#login-form{
+#login-form {
   text-align: center;
   padding: 50px 0px 50px 0px;
   border: 1px solid #dee4ee;
@@ -280,35 +280,36 @@ footer {
   -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
   box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
 }
-.login-flex-container{
+.login-flex-container {
   display: flex;
   flex-direction: column;
   height: 100%;
   margin: 5%;
 }
-.signup-flex-container{
+.signup-flex-container {
   display: flex;
   flex-direction: column;
 }
-.login-main-content{
-    background: ffffff;
-    flex:1;
-    display: flex;
-    align-items:center;
-    justify-content:center;
+.login-main-content {
+  background: ffffff;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.login-form p{
+.login-form p {
   margin: 0;
   padding-top: 2%;
 }
 
-.login-form input{
-  width: 70%;
-  margin-bottom: 20px;
+.login-form input {
+  min-width: 85%;
+  margin: 20px;
 }
 
-
-.login-form input[type="text"], input[type="email"], input[type="password"]{
+.login-form input[type="text"],
+input[type="email"],
+input[type="password"] {
   border: none;
   border-bottom: 1px solid #ffffff;
   background: #fff;
@@ -316,10 +317,10 @@ footer {
   height: 40px;
   color: #000;
   font-size: 16px;
-  border: 1px solid #dee4ee;
+  border: 1px solid #8dd8e6;
   padding-left: 10px;
 }
-.login-form input[type="submit"]{
+.login-form input[type="submit"] {
   max-width: 50%;
   border: none;
   outline: none;
@@ -327,23 +328,41 @@ footer {
   color: #ffffff;
   font-size: 18px;
   height: 30px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
-.login-form input[type="submit"]:hover{
+.login-form input[type="submit"]:hover {
   cursor: pointer;
   background: #0096db;
   color: #000000;
 }
-.login-form a{
+.login-form a {
   text-decoration: none;
   font-size: 14px;
   line-height: 20px;
   color: #15549a;
 }
 
-.login-form a:hover{
+.login-form a:hover {
   color: #e8491d;
+}
+.signup-field {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+.signup1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
 }
 @media all and (max-width: 500px) {
   html {
