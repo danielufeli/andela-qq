@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Welcome to Quick Credit</title>
+  <title>Quick Credit - Singin</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
@@ -30,15 +30,15 @@
       <div class="login-flex-container">
         <div class="login-main-content">
           <div id="login-form">
-            <form id="signForm" class="login-form" onsubmit="return false;">
+            <form id="signForm" class="login-form" action="dashboard.html">
               <h1>Welcome Back</h1>
               <p>
                 Sign in to your account to get started.
               </p>
               <p id="errorlog" class="warning"></p>
               <br />
-              <input type="text" id="email" placeholder="Enter Your Email" required />
-              <input type="password" id="password" placeholder="Enter Password" required />
+              <input type="text" id="email" placeholder="Enter Your Email" value="email@email.com" required />
+              <input type="password" id="password" placeholder="Enter Password" value="email" required />
               <input type="submit" id="loginBtn" value="Signin" />
               <p>
                 Having trouble logging in?
