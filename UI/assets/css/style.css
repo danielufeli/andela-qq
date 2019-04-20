@@ -314,8 +314,15 @@ footer {
   margin: 10px;
 }
 
+.loan input {
+  min-width: 10%;
+  margin: 10px;
+}
+
 .login-form input[type="text"],
 input[type="email"],
+input[type="number"],
+select,
 input[type="password"] {
   border: none;
   border-bottom: 1px solid #ffffff;
@@ -328,7 +335,7 @@ input[type="password"] {
   padding-left: 10px;
 }
 .login-form input[type="submit"] {
-  max-width: 50%;
+  width: 30%;
   border: none;
   outline: none;
   background: #15549a;
@@ -345,9 +352,6 @@ input[type="password"] {
 }
 .login-form a {
   text-decoration: none;
-  font-size: 14px;
-  line-height: 20px;
-  color: #15549a;
 }
 
 .login-form a:hover {
@@ -390,8 +394,8 @@ input[type="password"] {
   text-align: center;
   min-height: 400px;
 }
-.dashcontent p{
-  padding: 3%;
+.dashcontent p {
+  padding: 1%;
 }
 @media all and (max-width: 500px) {
   html {
