@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quick Credit - User Dashboard | Apply for Loan</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/loancal.js"></script>
+</head>
+
+<body>
+  <article>
+    <div class="inner-header">
+      <h1>User Dashboard</h1>
+    </div>
+
+    <main>
+      <div class="side-content">
+        <div class="sidebar">
+          <div class="sidenav">
+            <ul>
+              <li><a href="dashboard.html">Dashboard</a></li>
+              <li><a href="appyforloan.html">Edit Profile</a></li>
+              <li><a href="#">Apply for Loan</a></li>
+              <li><a href="#">Veiw Loan History</a></li>
+              <li><a href="index.html">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dashcontent">
+          <div class="main-widget">
+            <form action="loanpending.html">
+              <h1>Your Loan Application</h1>
+              <p id="errorlog" class="warning"></p>
+              <div class="login-form loan">
+                <input type="number" id="amount" placeholder="enter amount" onchange="calculate();" required>
+                <select id="months" onchange="calculate();" required>
+                  <option value="">How Long do you need to repay the loan?</option>
+                  <option value="1">1month</option>
+                  <option value="2">2months</option>
+                  <option value="3">3months</option>
+                  <option value="4">4months</option>
+                  <option value="5">5months</option>
+                  <option value="6">6months</option>
+                  <option value="7">7months</option>
+                  <option value="8">8months</option>
+                  <option value="9">9months</option>
+                  <option value="10">10months</option>
+                  <option value="11">11months</option>
+                  <option value="12">12months</option>
+                </select>
+                <h4>Monthly Installment Payment:</h4>
+                <p>₦<span class="output" id="payment">0.00</span></p>
+                <h4>Total Payment Due:</h4>
+                <p>₦<span class="output" id="total">0.00</span></p>
+                <h4>Total Interest:</h4>
+                <p>₦<span class="output" id="totalinterest">0.00</span></p>
+                <input type="submit" value="Apply Now" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-widget">
+        <p><img src="assets/img/logo.png" alt="" class="logo" /></p>
+        <p>
+          Address: No.1 Opebi Rd. Ikeja Lagos. | Hotline: 234-8082205956 |
+          E-mail: admin@quickcredit.ng
+        </p>
+      </div>
+    </footer>
+    <div class="footer-copy">
+      <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
+    </div>
+  </article>
+</body>
+
+</html>
