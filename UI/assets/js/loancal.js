@@ -1,3 +1,7 @@
+/**
+ * This Function calculates the monthly installment payment
+ *
+ */
 const calculate = () => {
   const amount = Number(document.getElementById("amount").value);
   const months = Number(document.getElementById("months").value);
