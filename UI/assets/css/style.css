@@ -34,6 +34,23 @@ body {
   text-decoration: none;
   text-transform: uppercase;
 }
+.btnverify {
+  background-color: #15549a;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 15px 8px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.btn:hover,
+.btn:focus,
+.btnverify:hover,
+.btnverify:focus {
+  background: #ff0000;
+}
 .top-bar {
   background-color: #15549a;
   display: -webkit-box;
@@ -428,6 +445,65 @@ table th {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(200, 200, 200, 0.75);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #fff;
+  color: #444;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
 @media all and (max-width: 500px) {
   html {
     display: table;
