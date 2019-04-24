@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quick Credit - Admin Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <article>
+    <div class="inner-header">
+      <h1>Admin Dashboard</h1>
+    </div>
+
+    <main>
+      <div class="side-content">
+        <div class="sidebar">
+          <div class="sidenav">
+            <ul>
+              <li><a href="index.html">Dashboard</a></li>
+              <li><a href="verifyclient.html">Verify Client</a></li>
+              <li><a href="viewloans.html">View Loans</a></li>
+              <li><a href="currentloans.html">Current Loans</a></li>
+              <li><a href="repaidloans.html">Repaid Loans</a></li>
+              <li>
+                <a href="postloanrepayment.html">Post Loan Repayment</a>
+              </li>
+              <li><a href="../index.html">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dashcontent">
+          <div class="main-widget">
+            <table>
+              <caption>
+                List of Clients
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Full Name">Jolade Jayeola</td>
+                  <td data-label="E-mail">jjade@gmail.com</td>
+                  <td data-label="Address">
+                    29, Akinwunmi Street, Lekki, Lagos
+                  </td>
+                  <td data-label="Status">
+                    Not Verified
+                    <a href="#open-modal"><img src="../assets/img/mark.png" alt="Verify Client" /></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Full Name">Kola Adamu</td>
+                  <td data-label="E-mail">kolaadamu@gmail.com</td>
+                  <td data-label="Address">21, Resurection Drive, Lekki</td>
+                  <td data-label="Status">
+                    Not Verified
+                    <a href="#open-modal">
+                      <img src="../assets/img/mark.png" alt="Verify Client" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Full Name">John Smith</td>
+                  <td data-label="E-mail">jsmith@gmail.com</td>
+                  <td data-label="Address">6, Colinton way, Wuse, Abuja</td>
+                  <td data-label="Status">Verified</td>
+                </tr>
+                <tr>
+                  <td data-label="Full Name">Bolade Johnson</td>
+                  <td data-label="E-mail">bjohnson@gmail.com</td>
+                  <td data-label="Address">79, oladipupo rd. yaba, Lagos</td>
+                  <td data-label="Status">Verified</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-widget">
+        <p><img src="../assets/img/logo.png" alt="" class="logo" /></p>
+        <p>
+          Address: No.1 Opebi Rd. Ikeja Lagos. | Hotline: 234-8082205956 |
+          E-mail: admin@quickcredit.ng
+        </p>
+      </div>
+    </footer>
+    <div class="footer-copy">
+      <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
+    </div>
+  </article>
+  <div id="open-modal" class="modal-window">
+    <div class="text-center">
+      <a href="#modal-close" title="Close" class="modal-close">
+        close &times;
+      </a>
+      <h1>Mark client as verified</h1>
+      <div class="login-form loan">
+        <p>
+          <a href="verifyclient.html"> &checkmark; Yes </a>
+          <br />
+        </p>
+        <p><a href="verifyclient.html"> &times; No </a></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
