@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quick Credit - Admin Dashboard | View Loans</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body>
+    <article>
+      <div class="inner-header">
+        <h1>Admin Dashboard</h1>
+      </div>
+
+      <main>
+        <div class="side-content">
+          <div class="sidebar">
+            <div class="sidenav">
+              <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="verifyclient.html">Verify Client</a></li>
+                <li><a href="viewloans.html">View Loans</a></li>
+                <li><a href="currentloans.html">Current Loans</a></li>
+                <li><a href="repaidloans.html">Repaid Loans</a></li>
+                <li>
+                  <a href="postloanrepayment.html">Post Loan Repayment</a>
+                </li>
+                <li><a href="../index.html">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="dashcontent">
+            <div class="main-widget">
+              <table>
+                <caption>
+                  All Loan Applications
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Created On</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Tenor</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Payment Installment</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Created On">05/10/2019</td>
+                    <td data-label="User">Jolade Jayeola</td>
+                    <td data-label="Amount">₦5,000.00</td>
+                    <td data-label="Tenor">1month</td>
+                    <td data-label="Balance">₦0.00</td>
+                    <td data-label="Payment Installment">₦5,250.00</td>
+                    <td data-label="Status">Approved</td>
+                    <td data-label="Actions">
+                      <a href="#open-modal" class="btnverify"> View Details </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Created On">04/10/2019</td>
+                    <td data-label="User">Bolade Johnson</td>
+                    <td data-label="Amount">₦5,000.00</td>
+                    <td data-label="Tenor">1month</td>
+                    <td data-label="Balance">₦5,250.00</td>
+                    <td data-label="Payment Installment">₦5,250.00</td>
+                    <td data-label="Status">Approved</td>
+                    <td data-label="Actions">
+                      <a href="#open-modal" class="btnverify"> View Details </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Created On">04/05/2019</td>
+                    <td data-label="User">Kola Adamu</td>
+                    <td data-label="Amount">₦10,000.00</td>
+                    <td data-label="Tenor">3months</td>
+                    <td data-label="Balance">₦10,000.00</td>
+                    <td data-label="Payment Installment">₦3,500.00</td>
+                    <td data-label="Status">Rejected</td>
+                    <td data-label="Actions">
+                      <a href="#open-modal" class="btnverify"> View Details </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Created On">04/04/2019</td>
+                    <td data-label="User">John Smith</td>
+                    <td data-label="Amount">₦10,000.00</td>
+                    <td data-label="Tenor">3months</td>
+                    <td data-label="Balance">₦10,000.00</td>
+                    <td data-label="Payment Installment">₦3,500.00</td>
+                    <td data-label="Status">Pending</td>
+                    <td data-label="Actions">
+                      <a href="#open-modal" class="btnverify"> View Details </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer-widget">
+          <p><img src="../assets/img/logo.png" alt="" class="logo" /></p>
+          <p>
+            Address: No.1 Opebi Rd. Ikeja Lagos. | Hotline: 234-8082205956 |
+            E-mail: admin@quickcredit.ng
+          </p>
+        </div>
+      </footer>
+      <div class="footer-copy">
+        <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
+      </div>
+    </article>
+    <div id="open-modal" class="modal-window">
+      <div class="text-center">
+        <a href="#modal-close" title="Close" class="modal-close">
+          close &times;
+        </a>
+        <h2>Loan Application Details</h2>
+        <br />
+        <div class="login-form loan">
+          <p><span class="tit">Created On:</span> 04/04/2019</p>
+          <p><span class="tit">User:</span> John Smith</p>
+          <p><span class="tit">Amount:</span> ₦10,000.00</p>
+          <p><span class="tit">Tenor:</span> 3months</p>
+          <p><span class="tit">Interest:</span> ₦500.00</p>
+          <p><span class="tit">Balance:</span> ₦10,000.00</p>
+          <p><span class="tit">Payment Installment:</span> ₦3,500.00</p>
+          <p><span class="tit">Repaid:</span> False</p>
+          <p><span class="tit">Status:</span> Pending</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

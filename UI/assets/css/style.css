@@ -38,10 +38,10 @@ body {
   background-color: #15549a;
   color: #fff;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 3px;
   margin-bottom: 3px;
-  padding: 15px 8px;
+  padding: 8px 8px;
   text-decoration: none;
   border-radius: 3px;
 }
@@ -460,7 +460,9 @@ table th {
   -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
-
+.tit {
+  font-weight: bold;
+}
 .modal-window:target {
   opacity: 1;
   pointer-events: auto;
