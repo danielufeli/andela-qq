@@ -24,6 +24,7 @@
                 <li><a href="viewloans.html">View Loans</a></li>
                 <li><a href="currentloans.html">Current Loans</a></li>
                 <li><a href="repaidloans.html">Repaid Loans</a></li>
+                <li><a href="approveloan.html">Approve/Reject Loans</a></li>
                 <li>
                   <a href="postloanrepayment.html">Post Loan Repayment</a>
                 </li>
@@ -32,8 +33,63 @@
             </div>
           </div>
           <div class="dashcontent">
-            <h3>Hello Admin</h3>
-            <p>No Loan Application Yet</p>
+            <h1>Welcome Admin</h1>
+            <div class="main-content">
+              <div class="main1">
+                <div class="main-widget">
+                  <p><span class="tit">Users:</span></p>
+                  <p>004</p>
+                </div>
+              </div>
+              <div class="main1">
+                <div class="main-widget">
+                  <p><span class="tit">Total Loans:</span></p>
+                  <p>010</p>
+                </div>
+              </div>
+              <div class="main1">
+                <div class="main-widget">
+                  <p><span class="tit">Total Amount Disbursed</span></p>
+                  <p>₦100,000.00</p>
+                </div>
+              </div>
+              <div class="main-widget">
+                <table>
+                  <caption>
+                    Recent Loan Applications
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">Created On</th>
+                      <th scope="col">User</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Repaid</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Id">1</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Repaid">False</td>
+                      <td data-label="Status">Pending</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Id">2</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Repaid">False</td>
+                      <td data-label="Status">Pending</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a href="viewloans.html" class="btn"> View All Loans</a>
+              </div>
+            </div>
           </div>
         </div>
       </main>

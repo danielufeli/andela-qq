@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Quick Credit - User Dashboard</title>
+    <title>Quick Credit - User Dashboard | Edit Profile</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
@@ -28,29 +28,20 @@
             </div>
           </div>
           <div class="dashcontent">
-            <div class="main-content">
-              <div class="main1">
-                <div class="main-widget">
-                  <h3>Welcome Daniel</h3>
-                  <p>You have not Applied for a Loan Yet</p>
-                  <a href="appyforloan.html" class="btnverify">Apply Now</a>
-                </div>
-              </div>
-              <div class="main1">
-                <div class="main-widget text-center">
-                  <img src="assets/img/avatar.png" alt="">
-                  <p><span class="tit">Name: </span>Daniel Ufeli</p>
-                  <p><span class="tit">E-mail: </span>danielufeli@yahoo.com</p>
-                  <p><span class="tit">Mobile No.: </span>+234-8082205956</p>
-                  <p><span class="tit">Location: </span>Lagos</p>
-                  <a href="editprofile.html" class="btnverify">Edit Profile</a>
-                </div>
+            <div class="main-widget">
+              <div class="login-form">
+                <h1>Edit Profile</h1>
+                <input type="text" id="fname" placeholder="First Name" value="Daniel" required />
+                <input type="text" id="lname" placeholder="Last Name" value="Ufeli" required />
+                <input type="text" id="phoneno" placeholder="Mobile Phone" value="08082205956" required />
+                <input type="text" id="address" placeholder="Address" value="26, Fagbeyiro Str. Alakuko, Lagos" required />
+                <input type="email" id="email" placeholder="E-mail" value="danielufeli@yahoo.com" required />
+                <input type="text" id="username" placeholder="Username" value="danielufeli" required />
+                <input type="password" id="password" placeholder="Change Password" required />
+                <input type="password" id="cpassword" placeholder="Confirm Password" required />
+                <input type="submit" id="signupBtn" value="Save" required />
               </div>
             </div>
-          </div>
-          <div class="main-content">
-            <div class="main1"></div>
-            <div class="main1"></div>
           </div>
         </div>
       </main>
