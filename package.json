@@ -9,7 +9,15 @@
     "@hapi/joi": "^15.0.0",
     "airbnb-browser-shims": "^3.2.1",
     "babel-polyfill": "^6.26.0",
-    "express": "^4.16.4"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "should": "^13.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -25,7 +33,7 @@
   },
   "scripts": {
     "start": "babel-node server.js",
-    "test": "nyc mocha --require @babel/register server/test/**/*.spec.js",
+    "test": "nyc mocha --require @babel/register --require babel-polyfill server/test/**/*.spec.js",
     "start:dev": "nodemon --exec babel-node server.js"
   },
   "repository": {
