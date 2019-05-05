@@ -35,7 +35,7 @@ class userController {
       req.body.firstName,
       req.body.lastName,
       hash,
-      req.body.addresss,
+      req.body.address,
       req.body.status,
       req.body.isAdmin,
     );

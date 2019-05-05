@@ -4,10 +4,11 @@ import server from '../../server';
 
 chai.use(chaiHttp);
 chai.should();
-chai.expect();
+
+let token;
 
 describe('Test signup endpoints', () => {
-  it('Should singup a user', (done) => {
+  it('Should signup a user', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup/')
       .send({
@@ -142,6 +143,7 @@ describe('Test signin endpoints', () => {
         res.status.should.be.equal(200);
         res.body.should.be.a('object');
         res.body.data.should.have.property('token');
+        token = res.body.data.token;
         done();
       });
   });
@@ -191,6 +193,90 @@ describe('Test signin endpoints', () => {
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
+        done();
+      });
+  });
+});
+describe('Test loan endpoints', () => {
+  it('Should generate invalid token', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans')
+      .set('x-auth-token', 'iihhhjjjkk')
+      .send({
+        amount: 10000,
+        tenor: 2,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('Should deny access without token', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans')
+      .set('x-auth-token', '')
+      .send({
+        amount: 10000,
+        tenor: 2,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(401);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('should create a loan', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans')
+      .set('x-auth-token', token)
+      .send({
+        amount: 10000,
+        tenor: 2,
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+  it('Should fail if amount is ommited', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/')
+      .set('x-auth-token', token)
+      .send({
+        tenor: 2,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.should.have.eql('Enter Loan amount');
+        done();
+      });
+  });
+  it('Should fail if tenor is ommited', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/')
+      .set('x-auth-token', token)
+      .send({
+        amount: 10000,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.should.have.eql('Enter how many months you need to pay back');
+        done();
+      });
+  });
+  it('Should not allow user to create another loan if status is pending', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/')
+      .set('x-auth-token', token)
+      .send({
+        amount: 10000,
+        tenor: 2,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.message.should.have.eql('You have a pending loan with us');
         done();
       });
   });
