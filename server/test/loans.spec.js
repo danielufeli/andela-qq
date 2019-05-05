@@ -135,4 +135,24 @@ describe('Test loan endpoints', () => {
         done();
       });
   });
+  it('Should get specific loan application', (done) => {
+    chai.request(server)
+      .get('/api/v1/loans/1')
+      .set('x-auth-token', token)
+      .send()
+      .end((err, res) => {
+        res.status.should.be.equal(200);
+        done();
+      });
+  });
+  it('Should fail if specific loan application ID is invalid', (done) => {
+    chai.request(server)
+      .get('/api/v1/loans/12')
+      .set('x-auth-token', token)
+      .send()
+      .end((err, res) => {
+        res.status.should.be.equal(404);
+        done();
+      });
+  });
 });

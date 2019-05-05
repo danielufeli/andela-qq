@@ -2,6 +2,7 @@ import Loan from '../models/loan';
 import validateLoan from '../helpers/validation/loans';
 import getUserById from '../helpers/getuserid';
 import currentLoan from '../helpers/currentLoan';
+import getSpecificLoan from '../helpers/specificloan';
 
 class loansController {
   static async createLoan(req, res) {
@@ -59,6 +60,15 @@ class loansController {
     return res.status(200).json({
       status: 200,
       data: loans,
+    });
+  }
+
+  static async specificLoans(req, res) {
+    const loan = getSpecificLoan(Number(req.params.loanid));
+    if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
+    return res.status(200).json({
+      status: 200,
+      data: loan,
     });
   }
 }
