@@ -10,7 +10,7 @@ const router = express.Router();
 // @access Public
 
 router.get('/', loanController.allLoans);
-
+router.get('/:loanid', loanController.specificLoans);
 router.post('/', auth.verifyToken, loanController.createLoan);
 
 export default router;
