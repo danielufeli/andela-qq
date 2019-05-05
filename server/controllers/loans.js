@@ -52,6 +52,15 @@ class loansController {
       },
     });
   }
+
+  static async allLoans(req, res) {
+    const loans = Loan.fetchAll();
+    if (loans && loans.length === 0) return res.status(400).json({ message: 'No Loan Application Available' });
+    return res.status(200).json({
+      status: 200,
+      data: loans,
+    });
+  }
 }
 
 export default loansController;

@@ -125,4 +125,14 @@ describe('Test loan endpoints', () => {
         done();
       });
   });
+  it('Should get all loan applications', (done) => {
+    chai.request(server)
+      .get('/api/v1/loans/')
+      .set('x-auth-token', token)
+      .send()
+      .end((err, res) => {
+        res.status.should.be.equal(200);
+        done();
+      });
+  });
 });
