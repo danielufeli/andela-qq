@@ -5,7 +5,6 @@ import validateSignin from '../helpers/validation/signin';
 import authtok from '../helpers/authtok';
 import currentUser from '../helpers/currentUser';
 
-// calling config function for jwt
 dotenv.config();
 
 /**
