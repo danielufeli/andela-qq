@@ -1,6 +1,7 @@
 import express from 'express';
 
 import adminUserController from '../controllers/adminusers';
+import auth from '../helpers/auth';
 
 const router = express.Router();
 
@@ -8,6 +9,6 @@ const router = express.Router();
 // @desc Test post route
 // @access Public
 
-router.patch('/:useremail/verify', adminUserController.adminVerifyUser);
+router.patch('/:useremail/verify', auth.verifyToken, adminUserController.adminVerifyUser);
 
 export default router;
