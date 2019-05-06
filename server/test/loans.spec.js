@@ -155,4 +155,14 @@ describe('Test loan endpoints', () => {
         done();
       });
   });
+  it('Should get current loans (not fully repaid)', (done) => {
+    chai.request(server)
+      .get('/api/v1/loans/search?status=approved&repaid=false')
+      .set('x-auth-token', token)
+      .send()
+      .end((err, res) => {
+        res.status.should.be.equal(200);
+        done();
+      });
+  });
 });
