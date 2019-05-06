@@ -3,6 +3,7 @@ import validateLoan from '../helpers/validation/loans';
 import getUserById from '../helpers/getuserid';
 import currentLoan from '../helpers/currentLoan';
 import getSpecificLoan from '../helpers/specificloan';
+import notPaid from '../helpers/notpaid';
 
 class loansController {
   static async createLoan(req, res) {
@@ -54,8 +55,17 @@ class loansController {
     });
   }
 
+  static async specificLoans(req, res) {
+    const loan = await getSpecificLoan(Number(req.params.loanid));
+    if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
+    return res.status(200).json({
+      status: 200,
+      data: loan,
+    });
+  }
+
   static async allLoans(req, res) {
-    const loans = Loan.fetchAll();
+    const loans = await Loan.fetchAll();
     if (loans && loans.length === 0) return res.status(400).json({ message: 'No Loan Application Available' });
     return res.status(200).json({
       status: 200,
@@ -63,12 +73,14 @@ class loansController {
     });
   }
 
-  static async specificLoans(req, res) {
-    const loan = getSpecificLoan(Number(req.params.loanid));
-    if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
+  static async currentLoansNotPaid(req, res) {
+    const { status } = req.query;
+    const { repaid } = req.query;
+    const result = await notPaid(status, JSON.parse(repaid));
+    if (result && result.length === 0) return res.status(400).json({ message: 'No Loan Application Available' });
     return res.status(200).json({
       status: 200,
-      data: loan,
+      data: result,
     });
   }
 }
