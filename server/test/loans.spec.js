@@ -187,12 +187,49 @@ describe('Test loan endpoints', () => {
         done();
       });
   });
-  it('Should fail if status is ommited', (done) => {
+  it('Should fail if approve/reject is ommited or invalid', (done) => {
     chai.request(server)
       .patch('/api/v1/loans/1')
       .set('x-auth-token', token)
       .send({
         status: 'kkll',
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        done();
+      });
+  });
+  it('Should post loan repayment transaction in favour of a client', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/1')
+      .set('x-auth-token', token)
+      .send({
+        paidAmount: 10500,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(201);
+        done();
+      });
+  });
+  it('Should fail if paid amount is invalid', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/1')
+      .set('x-auth-token', token)
+      .send({
+        paidAmount: 10000,
+      })
+      .end((err, res) => {
+        res.status.should.be.equal(400);
+        res.body.message.should.have.eql('The amount entered is Higher than the users balance of 0.00');
+        done();
+      });
+  });
+  it('Should fail if paid amount is invalid', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans/1')
+      .set('x-auth-token', token)
+      .send({
+        paidAmount: 'abcdef',
       })
       .end((err, res) => {
         res.status.should.be.equal(400);
