@@ -27,8 +27,6 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.4",
     "babel-preset-airbnb": "^3.2.1",
-    "codeclimate-test-reporter": "^0.5.1",
-    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
@@ -42,10 +40,7 @@
     "build": "nyc mocha --exit --compilers js:babel-core/register server/test/**/*.spec.js",
     "start": "babel-node server.js",
     "test": "nyc mocha --require @babel/register --require babel-polyfill server/test/**/*.spec.js",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov --require babel-core/register  _mocha --exit ../test/*.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "codeclimate-report": "codeclimate-test-reporter < ./coverage/lcov.info",
     "start:dev": "nodemon --exec babel-node server.js"
   },
   "repository": {

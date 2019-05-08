@@ -1,9 +1,15 @@
+sudo: false
 language: node_js
 node_js:
  - "12.0.0"
+install:
+  - npm install
+before_script:
+  - psql -c 'create user victor;' -U postgres
+  - psql -c 'create database banka;' -U postgres
+  - npm run refresh    
 script:
-  - npm test
+  - npm run build
+  - npm run test
 after_success:
-  - npm run coverage
-  - npm run report-coverage
-  - npm run codeclimate-report
+  - npm coveralls
