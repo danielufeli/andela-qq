@@ -5,11 +5,11 @@ const loans = [
     id: 1,
     firstName: 'Henry',
     lastName: 'Omola',
-    email: 'danino@yahoo.com',
+    email: 'danino1@yahoo.com',
     tenor: 4,
     amount: 10000.00,
     paymentInstallment: 2625.00,
-    status: 'approved',
+    status: 'pending',
     balance: 10500.00,
     interest: 500.00,
     repaid: false,
@@ -40,12 +40,25 @@ const loans = [
     interest: 1500.00,
     repaid: true,
   },
+  {
+    id: 4,
+    firstName: 'ola',
+    lastName: 'steve',
+    email: 'olas@gmail.com',
+    tenor: 4,
+    amount: 10000.00,
+    paymentInstallment: 2625.00,
+    status: 'olas@gmail.com',
+    balance: 10500.00,
+    interest: 500.00,
+    repaid: false,
+  },
 ];
 
 class Loan {
-  constructor(user, tenor, amount, paymentInstallment, balance, interest) {
+  constructor(email, tenor, amount, paymentInstallment, balance, interest) {
     this.id = loans.length + 1;
-    this.user = user;
+    this.email = email;
     this.createdOn = moment().format('dddd MMM YYYY HH:mm:ss');
     this.repaid = false;
     this.tenor = tenor;
