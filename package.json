@@ -39,7 +39,6 @@
   "scripts": {
     "start": "babel-node server.js",
     "test": "nyc mocha --require @babel/register --require babel-polyfill server/test/**/*.spec.js",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "start:dev": "nodemon --exec babel-node server.js"
   },
