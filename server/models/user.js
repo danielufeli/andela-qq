@@ -1,4 +1,16 @@
-const users = [];
+const users = [
+  {
+    id: 1,
+    email: 'danino1@yahoo.com',
+    mobileno: '08082205956',
+    firstName: 'Daniel',
+    lastName: 'Ufeli',
+    password: 'Domi@2019',
+    address: '26, Fagbeyiro Street, Alakuko',
+    status: 'unverified',
+    isAdmin: false,
+  },
+];
 
 class User {
   constructor(email, mobileno, firstName, lastName, password, address) {

@@ -7,6 +7,8 @@ import getSpecificLoan from '../helpers/specificloan';
 import notPaid from '../helpers/notpaid';
 import validateLoanStatus from '../helpers/validation/loanstatus';
 import validateAmount from '../helpers/validation/amount';
+import repaymentHistory from '../helpers/repaymenthistory';
+
 
 class loansController {
   static async createLoan(req, res) {
@@ -114,6 +116,7 @@ class loansController {
     const repayment = new Repayment(
       loan.id,
       parseFloat(req.body.paidAmount).toFixed(2),
+      loan.paymentInstallment,
     );
     await repayment.save();
     const {
@@ -134,6 +137,16 @@ class loansController {
         balance,
       },
     });
+  }
+
+  static async viewAllLoans(req, res, next) {
+    try {
+      const repayments = await repaymentHistory(Number(req.params.loanid));
+      if (!repayments) return res.status(400).json({ message: 'No Repayment History Found' });
+      return res.status(200).json({ status: 200, data: repayments });
+    } catch (ex) {
+      return next(ex);
+    }
   }
 }
 
