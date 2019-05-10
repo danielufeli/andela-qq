@@ -2,9 +2,16 @@ sudo: false
 language: node_js
 node_js:
  - "12.0.0"
+addons:
+    code_climate:
+        repo_token: 775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
 install:
   - npm install
 script:
   - npm run coveralls
+before_script:
+  - npm install codeclimate-test-reporter -g
+after_script:
+  - codeclimate-test-reporter < ./coverage/lcov.info
 notifications:
   email: false
