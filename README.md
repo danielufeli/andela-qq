@@ -10,17 +10,17 @@ ___
 
 # Technologies
 
-Quick Credit was developed with JavaScript (ES6) Node.js using [Express 4](http://expressjs.com/). 
-Using the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+Quick Credit was developed with JavaScript (ES6), Node.js using [Express 4](http://expressjs.com/). <br/>
+with [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 ___
 
 ## Links to GitHub Pages for User/Admin
 
-Homepage: https://danielufeli.github.io/andela-qq/UI/
-Signup: https://danielufeli.github.io/andela-qq/UI/signup.html
-Signin: https://danielufeli.github.io/andela-qq/UI/signin.html
-User Dashboard: https://danielufeli.github.io/andela-qq/UI/dashboard.html
+Homepage: https://danielufeli.github.io/andela-qq/UI/ <br/>
+Signup: https://danielufeli.github.io/andela-qq/UI/signup.html <br/>
+Signin: https://danielufeli.github.io/andela-qq/UI/signin.html <br/>
+User Dashboard: https://danielufeli.github.io/andela-qq/UI/dashboard.html <br/>
 Admin Dashboard: https://danielufeli.github.io/andela-qq/UI/admin/
 
 ## Swagger Documentation
@@ -45,12 +45,12 @@ API endpoints URL - https://andelaqq.herokuapp.com/
 
 ___
 ### Sample Users
-Admin-
-Username: admin@quickcredit.com
+Admin-<br/>
+Username: admin@quickcredit.com<br/>
 Password: Domi@2019
 
-User-
-Username: user@quickcredit.com
+User-<br/>
+Username: user@quickcredit.com<br/>
 Password: Domi@2019
 
 ___
@@ -60,7 +60,7 @@ ___
 Make sure you have [Node.js](http://nodejs.org/) 12.0.0 installed and [POSTMAN](https://www.getpostman.com/downloads/).
 
 ```sh
-git clone https://github.com/danielufeli/andela-qq.git # or clone your own fork
+git clone https://github.com/danielufeli/andela-qq.git
 cd andela-qq
 npm install
 npm start
@@ -71,6 +71,3 @@ ___
 
 ## Author
 ### Daniel Ufeli
-
-## Licence
-
