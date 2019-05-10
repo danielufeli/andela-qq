@@ -8,9 +8,9 @@ addons:
 install:
   - npm install
 script:
-  - npm run coveralls
+  - istanbul cover npm run coveralls  -- -R spec
 before_script:
-  - npm install codeclimate-test-reporter -g
+  - npm install codeclimate-test-reporter istanbul -g
 after_script:
   - codeclimate-test-reporter < ./coverage/lcov.info
 notifications:
