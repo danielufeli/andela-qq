@@ -1,21 +1,17 @@
-env:
-  global:
-    - CC_TEST_REPORTER_ID=775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
-notifications:
-  email: false
+sudo: false
 language: node_js
 node_js:
  - "12.0.0"
- rvm:
-  - 2.2.0
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+addons:
+    code_climate:
+        repo_token: 775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
 install:
   - npm install
 script:
   - npm run coveralls
-  - bundle exec rspec
+before_script:
+  - npm install codeclimate-test-reporter -g
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - codeclimate-test-reporter < ./coverage/lcov.info
+notifications:
+  email: false
