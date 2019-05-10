@@ -40,7 +40,8 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "babel-node server.js",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/app.js",
     "test": "mocha --require @babel/register --require babel-polyfill server/test/**/*.spec.js",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "start:dev": "nodemon --exec babel-node server.js"
