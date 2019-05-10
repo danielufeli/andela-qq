@@ -1,0 +1,122 @@
+path:
+  /api/v1/loans:
+    post:
+      tags:
+        - users
+      summary: User can apply for a loan
+      description: Allow user to apply for loan on Quick Credit Platform
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: loan
+          description: new loan application to be created
+          schema:
+            $ref: '#/definitions/loan'
+      responses:
+        201:
+          description: Loan Applicaiton created successfully
+        400:
+          description: Bad request
+        403:
+          description: Invalid token or missing token
+        500:
+          description: Internal server error
+    get:
+      tags:
+        - admin
+      summary: Gets all loan applications, if a query string is present it sorts the loans based on current loans (not fully repaid) or repaid loans
+      description: Admin can view all loan applications
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: status
+          description: Loan Application Status
+          type: string
+        - in: query
+          name: repaid
+          description: Current loan (not repaid) or Repaid
+          type: string
+      responses:
+        200:
+          description: Successfully get applications
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+  /api/v1/loans/{loanid}:
+    get:
+      tags:
+        - admin
+      summary: Gets a specific loan application
+      description: Admin can view a specific loan application
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: loanid
+          description: Loan Application ID
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully get a specific loan
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+    patch:
+      tags:
+        - admin
+      summary: Allows admin to approve/reject a loan application
+      description: Admin can approve/reject a loan
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Approve Loan
+          description: Approve or Reject Loan
+          schema:
+            $ref: '#/definitions/approveLoan'
+        - in: path
+          name: loanid
+          description: Loan Id
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully approves/rejects a loan
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+definitions:
+  loan:
+    type: object
+    required:
+      - amount
+      - tenor
+    properties:
+      amount:
+        type: integer
+        example: 10000
+      tenor:
+        type: integer
+        example: 2
+  approveLoan:
+    type: object
+    required:
+      - status
+    properties:
+      status:
+        type: string
+        example: approved

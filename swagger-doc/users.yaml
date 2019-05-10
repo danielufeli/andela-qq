@@ -1,0 +1,127 @@
+path:
+  /api/v1/auth/signup:
+    post:
+      tags:
+        - users
+      summary: Creates a new user
+      description: |
+        Allow you to sign up for a user account on Quick Credit
+      produces:
+          - application/json
+      parameters:
+        - in: body
+          name: user
+          description: user to be created
+          schema:
+            $ref: '#/definitions/signUp'
+      responses:
+        201:
+          description: User created
+        400:
+          description: Bad request  
+        401:
+          description: User with email already exists
+        500:
+          description: Internal server error
+  /api/v1/auth/signin:
+    post:
+      tags:
+        - users
+      summary: Signs in a new user
+      description: A user can sign in to Quick Credit
+      consumes:
+          - application/json
+      produces:
+          - application/json   
+      parameters:
+        - in: body
+          name: sign in
+          description: user sign in
+          schema:
+            $ref: '#/definitions/signIn'
+      responses:
+        200:
+          description: User signed in
+        400: 
+          description: Bad request  
+        401:
+          description: Incorrect credentials
+        500:
+          description: Internal server error
+  /api/v1/users/{useremail}/verify:
+    patch:
+      tags:
+        - admin
+      summary: Allows Admin to mark a client as verified after confirming the client’s work or home address
+      description: Admin can mark a client as verified
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: status
+          description: status verified or unverified
+          schema:
+            $ref: '#/definitions/verifyUser'
+        - in: path
+          name: useremail
+          description: User email address
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successfully mark a client as verified
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+definitions:
+  signUp:
+    type: object
+    required:
+      - firstName
+      - lastName
+      - address
+      - mobileno
+      - email
+      - password
+    properties:
+      firstName:
+        type: string
+        example: James
+      lastName:
+        type: string
+        example: Adeyemo
+      mobileno:
+        type: string
+        example: 08082205956
+      address:
+        type: string
+        example: 2, Opebi Road Ikeja  
+      email:
+        type: string
+        example: adeyemo@outlook.com
+      password: 
+        type: string
+        example: Domi@2019
+  signIn:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: user@quickcredit.com
+      password: 
+        type: string
+        example: Domi@2019
+  verifyUser:
+    type: object
+    required:
+      - status
+    properties:
+      status:
+        type: string
+        example: verified

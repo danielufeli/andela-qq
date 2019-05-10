@@ -1,0 +1,63 @@
+path:
+  /api/v1/loans/{loanid}/repayment:
+    post:
+      tags:
+        - admin
+      summary: Admin can post loan repayment
+      description: Admin can post loan repayment transaction in favour of a client
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: loanid
+          description: Loan Application ID
+          type: integer
+          required: true
+        - in: body
+          name: paidAmount
+          description: Amount the user paid
+          schema:
+            $ref: '#/definitions/repayment'
+      responses:
+        201:
+          description: Loan Repayment created successfully
+        400:
+          description: Bad request
+        403:
+          description: Invalid token or missing token
+        500:
+          description: Internal server error
+  /api/v1/loans/{loanid}/repayments:
+    get:
+      tags:
+        - users
+      summary: All loan repayment history
+      description: User can view all loan repayment history
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: loanid
+          description: Loan Application ID
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully get a all loan repayment history
+        401:
+          description: Denies access to the resource if its not the user that applied for the loan
+        500:
+          description: Internal server error
+definitions:
+  repayment:
+    type: object
+    required:
+      - paidAmount
+    properties:
+      paidAmount:
+        type: integer
+        example: 10000

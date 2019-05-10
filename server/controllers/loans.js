@@ -139,7 +139,7 @@ class loansController {
     });
   }
 
-  static async viewAllLoans(req, res, next) {
+  static async viewAllRepayments(req, res, next) {
     try {
       const repayments = await repaymentHistory(Number(req.params.loanid));
       if (!repayments) return res.status(400).json({ message: 'No Repayment History Found' });
