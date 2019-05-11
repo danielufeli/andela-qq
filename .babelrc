@@ -1,3 +1,4 @@
 {
-  "presets": ["airbnb", "@babel/preset-env"]
+  "presets": ["airbnb", "@babel/preset-env"],
+  "ignore": []
 }
