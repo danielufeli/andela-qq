@@ -45,6 +45,7 @@
     "start": "babel-node server.js",
     "test": "mocha --require @babel/register server/test/**/*.spec.js",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start:dev": "nodemon --exec babel-node server.js"
   },
   "engines": {
