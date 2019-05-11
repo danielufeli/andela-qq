@@ -47,8 +47,7 @@
     "test": "mocha --require @babel/register server/test/**/*.spec.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "start:dev": "nodemon --exec babel-node server.js",
-    "heroku-postbuild": "npm run build"
+    "start:dev": "nodemon --exec babel-node server.js"
   },
   "engines": {
     "node": "12.0.0"
