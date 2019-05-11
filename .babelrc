@@ -1,4 +1,5 @@
 {
   "presets": ["airbnb", "@babel/preset-env"],
-  "ignore": []
+  "ignore": [],
+  "plugins": ["@babel/plugin-transform-runtime"]
 }
