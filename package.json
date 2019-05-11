@@ -43,7 +43,7 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rimraf ./dist/ && babel server --out-dir dist",
     "start": "node dist/server.js",
     "test": "mocha --require @babel/register server/test/**/*.spec.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
