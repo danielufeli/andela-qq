@@ -5,6 +5,7 @@
   "type": "module",
   "main": "server.js",
   "dependencies": {
+    "@babel/runtime": "^7.4.4",
     "@hapi/joi": "^15.0.0",
     "airbnb-browser-shims": "^3.2.1",
     "babel-polyfill": "^6.26.0",
@@ -29,7 +30,6 @@
     "@babel/register": "^7.4.4",
     "babel-preset-airbnb": "^3.2.1",
     "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
