@@ -1,4 +1,4 @@
-# Quick Credit [![Build Status](https://travis-ci.org/danielufeli/andela-qq.svg?branch=develop)](https://travis-ci.org/danielufeli/andela-qq)  [![Coverage Status](https://coveralls.io/repos/github/danielufeli/andela-qq/badge.svg)](https://coveralls.io/github/danielufeli/andela-qq)  [![Maintainability](https://api.codeclimate.com/v1/badges/d04d8b3cc0893a21985a/maintainability)](https://codeclimate.com/github/danielufeli/andela-qq/maintainability)
+# Quick Credit [![Build Status](https://travis-ci.org/danielufeli/andela-qq.svg?branch=develop)](https://travis-ci.org/danielufeli/andela-qq)  [![Coverage Status](https://coveralls.io/repos/github/danielufeli/andela-qq/badge.svg)](https://coveralls.io/github/danielufeli/andela-qq)  [![Maintainability](https://api.codeclimate.com/v1/badges/d04d8b3cc0893a21985a/maintainability)](https://codeclimate.com/github/danielufeli/andela-qq/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/d04d8b3cc0893a21985a/test_coverage)](https://codeclimate.com/github/danielufeli/andela-qq/test_coverage)
 ___
 
 ## Quick Credit 
