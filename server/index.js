@@ -1,7 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import 'airbnb-browser-shims';
-import routes from './server/routes/routes';
+import routes from './routes/routes';
 
 const app = express();
 
