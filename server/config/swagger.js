@@ -14,8 +14,6 @@ const swaggerDefinition = {
       in: 'header',
     },
   },
-  host: 'https://andelaqq.herokuapp.com',
-  basePath: '/api/v1',
 };
 
 const options = {
