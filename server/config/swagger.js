@@ -14,11 +14,13 @@ const swaggerDefinition = {
       in: 'header',
     },
   },
+  host: 'https://andelaqq.herokuapp.com',
+  basePath: '/api/v1',
 };
 
 const options = {
   swaggerDefinition,
-  apis: ['./swagger-doc/*.yaml'],
+  apis: ['*/swagger-doc/*.yaml'],
 };
 
 const swaggerSpec = swaggerJsDoc(options);

@@ -5,13 +5,6 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/register": "^7.4.4",
-    "babel-preset-airbnb": "^3.2.1",
     "@babel/runtime": "^7.4.4",
     "@hapi/joi": "^15.0.0",
     "airbnb-browser-shims": "^3.2.1",
@@ -31,6 +24,13 @@
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "babel-preset-airbnb": "^3.2.1",
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -48,7 +48,7 @@
     "test": "mocha --require @babel/register server/test/**/*.spec.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
-    "start:dev": "nodemon --exec babel-node index.js",
+    "start:dev": "nodemon --exec babel-node server/index.js",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
