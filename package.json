@@ -5,12 +5,14 @@
   "type": "module",
   "main": "server.js",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
     "babel-preset-airbnb": "^3.2.1",
+    "@babel/runtime": "^7.4.4",
     "@hapi/joi": "^15.0.0",
     "airbnb-browser-shims": "^3.2.1",
     "babel-polyfill": "^6.26.0",
@@ -23,13 +25,12 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
+    "rimraf": "^2.6.3",
     "should": "^13.2.3",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -44,8 +45,8 @@
   "scripts": {
     "start": "babel-node server.js",
     "test": "mocha --require @babel/register server/test/**/*.spec.js",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "start:dev": "nodemon --exec babel-node server.js"
   },
   "engines": {
