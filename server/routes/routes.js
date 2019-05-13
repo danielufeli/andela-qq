@@ -3,7 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 import users from './users';
 import adminusers from './adminusers';
 import loans from './loans';
-import swaggerSpec from '../../config/swagger';
+import swaggerSpec from '../config/swagger';
 
 export default (app) => {
   app.use(bodyParser.urlencoded({ extended: false }));
