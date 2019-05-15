@@ -2,7 +2,7 @@ import currentUser from '../helpers/currentUser';
 import validateUserStatus from '../helpers/validation/status';
 
 class adminUserController {
-  static async adminVerifyUser(req, res) {
+  static adminVerifyUser(req, res) {
     const user = currentUser(req.params.useremail);
     if (!user) return res.status(404).json({ message: 'The user with the given email was not found' });
     const { error } = validateUserStatus(req.body);
