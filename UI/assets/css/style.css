@@ -258,8 +258,7 @@ main {
   background-color: #fff;
   position: relative;
   padding: 10%;
-  height: 100%;
-  min-height: 100%;
+  min-height: 180px;
   margin-bottom: 10px;
 }
 .testimonial-widget p {
@@ -295,7 +294,6 @@ main {
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding-top: 3%;
   min-height: 100%;
 }
 .testimonial1 {
@@ -590,6 +588,9 @@ table th {
   }
 }
 @media all and (max-width: 800px) {
+  .testimonial-widget{
+    min-height: 100%;
+  }
   .main-nav{
     display: block;
     text-align: center;
