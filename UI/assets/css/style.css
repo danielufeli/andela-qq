@@ -10,6 +10,34 @@ body {
   height: 100%;
 }
 
+.main-nav {
+  background: #15549a;
+  display: -webkit-flex;
+  display: flex;
+}
+.main-nav{
+  list-style: none;
+}
+.main-nav li:first-child {
+  margin-right: auto;
+}
+.main-nav a {
+  font-size: 14px;
+  background: #15549a;
+  color: #fff;
+	display: block;
+	padding: 15px;
+	text-decoration: none;
+}
+.main-nav a:hover{
+  background: #2E76CF;
+}
+.main-nav .logo {
+  margin-right: 100px;
+  margin: 0;
+  padding: 0;
+  background: #15549a;;
+}
 .banner {
   background: url("../img/header-bg.jpg");
   max-width: 100%;
@@ -28,28 +56,40 @@ body {
   color: #fff;
   display: inline-block;
   font-size: 20px;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 25px;
-  padding: 15px 80px;
+  padding: 15px 20px;
   text-decoration: none;
   text-transform: uppercase;
 }
 .btnverify {
+  width: 85px;
   background-color: #15549a;
   color: #fff;
   display: inline-block;
-  font-size: 12px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  padding: 8px 8px;
+  font-size: 11px;
+  padding: 10px 10px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.btnsign {
+  width: 200px;
+  background-color: #15549a;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 15px 20px;
   text-decoration: none;
   border-radius: 3px;
 }
 .btn:hover,
 .btn:focus,
+.btnsign:hover,
 .btnverify:hover,
 .btnverify:focus {
-  background: #ff0000;
+  background: #2E76CF;
 }
 .top-bar {
   background-color: #15549a;
@@ -58,16 +98,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: auto;
-}
-.logo {
-  color: #fff;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding: 10px 0;
-  max-width: 100%;
   height: auto;
 }
 .menu {
@@ -95,11 +125,13 @@ body {
   -ms-flex: 1;
   flex: 1;
   text-align: center;
+  
 }
 .menu ul li a {
   color: #fff;
   font-size: 20px;
   text-decoration: none;
+  margin-right: auto;
 }
 
 .menu ul li a:hover {
@@ -154,8 +186,10 @@ main {
   -webkit-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
   -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
   box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+  min-height: 100%;
 }
 .main-widget h3 {
+  padding-top: 5%;
   margin-bottom: 20px;
 }
 .main-content {
@@ -172,17 +206,26 @@ main {
   min-height: 100%;
   align-items: stretch;
 }
+.circle-text {
+  width:50%;
+  font-size: 16px;
+}
+
 .circle {
-  background-color: #e3f0fe;
+  overflow: hidden;
+  background-color: #dee4ee;
   width: 60px;
   height: 60px;
-  border: 1px solid #15549a;
   border-radius: 100px;
   color: #15549a;
-  margin: -70px auto 40px auto;
+  margin: 0 auto 0 auto;
   padding: 10px;
   text-align: center;
   line-height: 2.5;
+  border: 1px solid #dee4ee;
+  -webkit-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+  -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
+  box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
 }
 .number {
   font-size: 24px;
@@ -202,6 +245,10 @@ main {
   text-align: center;
   padding-top: 30px;
 }
+.testimonial img{
+  height: 40px;
+  border-radius: 100px;
+}
 .testimonial h1 {
   margin: 0px 0px 10px 0px;
   color: #fff;
@@ -211,17 +258,19 @@ main {
   background-color: #fff;
   position: relative;
   padding: 10%;
-  margin-bottom: 30px;
+  min-height: 180px;
+  margin-bottom: 10px;
 }
 .testimonial-widget p {
   font-family: "Merriweather", serif;
   color: #414855;
   font-style: italic;
-  line-height: 32px;
+  line-height: 22px;
+  min-height: 100%;
 }
 .testimonial-autor {
   padding-top: 15px;
-  padding-bottom: 12px;
+  padding-bottom: 5px;
 }
 .testimonial-name {
   color: #fff;
@@ -231,10 +280,6 @@ main {
 .testimonial-title {
   color: #f51f8a;
   margin-bottom: 0px;
-}
-.testimonial-img {
-  float: left;
-  padding-right: 29px;
 }
 .testimonial-meta {
   font-size: 12px;
@@ -249,13 +294,17 @@ main {
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding-top: 3%;
+  min-height: 100%;
 }
 .testimonial1 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  flex-flow: row wrap;
+  padding-top: 3%;
+  height: 100%;
+  align-items: stretch;
   text-align: center;
   padding: 3%;
 }
@@ -327,7 +376,7 @@ footer {
 }
 
 .signup-form input {
-  min-width: 50%;
+  width: 1.5em;
   margin: 10px;
 }
 
@@ -351,28 +400,12 @@ input[type="password"] {
   border: 1px solid #8dd8e6;
   padding-left: 10px;
 }
-.login-form input[type="submit"] {
-  width: 30%;
-  border: none;
-  outline: none;
-  background: #15549a;
-  color: #ffffff;
-  font-size: 18px;
-  height: 30px;
-  border-radius: 5px;
-}
-
-.login-form input[type="submit"]:hover {
-  cursor: pointer;
-  background: #0096db;
-  color: #000000;
-}
 .login-form a {
   text-decoration: none;
 }
 
 .login-form a:hover {
-  color: #e8491d;
+  color: #2E76CF;
 }
 
 .side-content {
@@ -393,12 +426,12 @@ input[type="password"] {
 .sidenav ul li {
   text-align: center;
   padding: 10px;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid #2E76CF;
   list-style-type: none;
 }
 .sidenav ul li:hover {
-  background-color: red;
-  color: white;
+  background-color: #2E76CF;
+  color: #fff;
 }
 .sidebar a {
   text-decoration: none;
@@ -522,7 +555,6 @@ table th {
   .logo {
     max-width: 100%;
     height: auto;
-    padding: 18px 0 0;
   }
   .menu ul {
     -webkit-box-orient: vertical;
@@ -556,6 +588,16 @@ table th {
   }
 }
 @media all and (max-width: 800px) {
+  .testimonial-widget{
+    min-height: 100%;
+  }
+  .main-nav{
+    display: block;
+    text-align: center;
+  }
+  .main-nav a {
+    padding: 5px;
+  }
   .top-bar {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
