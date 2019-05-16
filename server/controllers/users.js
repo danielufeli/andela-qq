@@ -1,9 +1,7 @@
 import dotenv from 'dotenv';
 import User from '../models/user';
-import validateUser from '../helpers/validation/users';
-import validateSignin from '../helpers/validation/signin';
 import authtok from '../helpers/authtok';
-import currentUser from '../helpers/currentUser';
+import userObjects from '../middleware/userObjects';
 
 dotenv.config();
 
@@ -22,13 +20,9 @@ class userController {
    * @returns
    * @memberof userController
    */
-  static async userSignup(req, res) {
-    const { error } = validateUser(req.body);
-    if (error) return res.status(400).json(error.details[0].message);
-    let user = await currentUser(req.body.email);
-    if (user) return res.status(401).json('User Already Registered.');
+  static userSignup(req, res) {
     const hash = authtok.hashPassword(req.body.password);
-    user = new User(
+    const user = new User(
       req.body.email,
       req.body.mobileno,
       req.body.firstName,
@@ -36,11 +30,11 @@ class userController {
       hash,
       req.body.address,
     );
-    await user.save();
+    user.save();
     const {
-      id, firstName, lastName, email, mobileno, isAdmin,
+      id, firstName, lastName, email, mobileno,
     } = user;
-    const userToken = authtok.generateToken(id, isAdmin);
+    const userToken = authtok.generateToken('');
     return res.status(201).json({
       status: 201,
       data: {
@@ -63,13 +57,10 @@ class userController {
  * @returns
  * @memberof userController
  */
-  static async userSignin(req, res) {
-    const { error } = validateSignin(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-    const user = await currentUser(req.body.email);
-    if (!user) return res.status(401).json({ message: 'Your email or password is incorrect' });
+  static userSignin(req, res) {
+    const user = userObjects.getUser(req);
     const validPassword = authtok.comparePassword(user.password, req.body.password);
-    if (!validPassword) return res.status(401).json({ message: 'Your email or password is incorrect' });
+    if (!validPassword) return res.status(401).json({ status: 401, message: 'Your email or password is incorrect' });
     const {
       id, firstName, lastName, email, mobileno, isAdmin,
     } = user;

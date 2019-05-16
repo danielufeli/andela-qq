@@ -8,6 +8,7 @@
     "@babel/runtime": "^7.4.4",
     "@hapi/joi": "^15.0.0",
     "airbnb-browser-shims": "^3.2.1",
+    "app-root-path": "^2.2.1",
     "babel-polyfill": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -18,10 +19,13 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
     "rimraf": "^2.6.3",
     "should": "^13.2.3",
     "swagger-jsdoc": "^3.2.9",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
@@ -42,7 +46,7 @@
     "superagent": "^5.0.5",
     "supertest": "^4.0.2"
   },
-  "scripts": { 
+  "scripts": {
     "build": "babel server --out-dir dist",
     "start": "node dist/index.js",
     "test": "mocha --require @babel/register server/test/**/*.spec.js",

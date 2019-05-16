@@ -3,6 +3,9 @@ import express from 'express';
 import adminUserController from '../controllers/adminusers';
 import auth from '../helpers/auth';
 import checkIsAdmin from '../middleware/isAdmin';
+import allValidator from '../middleware/allValidator';
+import getUserId from '../middleware/getUserId';
+import validateUserStatus from '../helpers/validation/status';
 
 const router = express.Router();
 
@@ -10,6 +13,6 @@ const router = express.Router();
 // @desc Test post route
 // @access Public
 
-router.patch('/:useremail/verify', auth.verifyToken, checkIsAdmin, adminUserController.adminVerifyUser);
+router.patch('/:useremail/verify', auth.verifyToken, checkIsAdmin, getUserId, allValidator(validateUserStatus), adminUserController.adminVerifyUser);
 
 export default router;

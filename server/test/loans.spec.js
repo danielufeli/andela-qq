@@ -37,7 +37,7 @@ describe('Test loan endpoints User', () => {
       .set('x-auth-token', 'iihhhjjjkk')
       .send(loanInfo.newLoan)
       .end((err, res) => {
-        res.status.should.be.equal(403);
+        res.status.should.be.equal(401);
         res.body.should.be.a('object');
         done();
       });
@@ -48,7 +48,7 @@ describe('Test loan endpoints User', () => {
       .set('x-auth-token', '')
       .send(loanInfo.newLoan)
       .end((err, res) => {
-        res.status.should.be.equal(403);
+        res.status.should.be.equal(401);
         res.body.should.be.a('object');
         done();
       });
@@ -84,7 +84,7 @@ describe('Test loan endpoints User', () => {
       .send(loanInfo.ommitAmount)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('Enter Loan amount');
+        res.body.error.should.have.eql('Enter Loan amount');
         done();
       });
   });
@@ -95,7 +95,7 @@ describe('Test loan endpoints User', () => {
       .send(loanInfo.ommitTenor)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('Enter how many months you need to pay back');
+        res.body.error.should.have.eql('Enter how many months you need to pay back');
         done();
       });
   });
@@ -187,7 +187,7 @@ describe('Test loan endpoints User', () => {
       .send()
       .end((err, res) => {
         res.should.have.status(400);
-        res.body.should.have.eql('Status must be set to verified or unverified');
+        res.body.error.should.have.eql('Status must be set to verified or unverified');
         done();
       });
   });
@@ -198,7 +198,7 @@ describe('Test loan endpoints User', () => {
       .send(loanInfo.wrongStatus)
       .end((err, res) => {
         res.should.have.status(400);
-        res.body.should.have.eql('Status must be set to verified or unverified');
+        res.body.error.should.have.eql('Status must be set to verified or unverified');
         done();
       });
   });

@@ -13,7 +13,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.signup)
       .end((err, res) => {
         res.status.should.be.equal(201);
-        assert.equal((res.body.data.id), 4);
+        assert.equal((res.body.data.id), 5);
         assert.equal((res.body.data.firstName), 'Daniel');
         assert.equal((res.body.data.lastName), 'Ufeli');
         assert.equal((res.body.data.mobileno), '08082205956');
@@ -28,7 +28,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.signupEmailOmitted)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"email" is not allowed to be empty');
+        res.body.error.should.have.eql('"email" is not allowed to be empty');
         done();
       });
   });
@@ -38,7 +38,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.invalidEmail)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"email" must be a valid email');
+        res.body.error.should.have.eql('"email" must be a valid email');
         done();
       });
   });
@@ -48,7 +48,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.ommitedFirstname)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"firstName" is not allowed to be empty');
+        res.body.error.should.have.eql('"firstName" is not allowed to be empty');
         done();
       });
   });
@@ -58,7 +58,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.ommitedLastname)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"lastName" is not allowed to be empty');
+        res.body.error.should.have.eql('"lastName" is not allowed to be empty');
         done();
       });
   });
@@ -68,7 +68,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.ommitedPassword)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"password" is not allowed to be empty');
+        res.body.error.should.have.eql('"password" is not allowed to be empty');
         done();
       });
   });
@@ -78,7 +78,7 @@ describe('Test signup endpoints', () => {
       .send(userInfo.ommitedAddress)
       .end((err, res) => {
         res.status.should.be.equal(400);
-        res.body.should.have.eql('"address" is not allowed to be empty');
+        res.body.error.should.have.eql('"address" is not allowed to be empty');
         done();
       });
   });
