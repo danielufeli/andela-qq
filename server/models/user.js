@@ -1,38 +1,4 @@
-const users = [
-  {
-    id: 1,
-    email: 'admin@quickcredit.com',
-    mobileno: '08082205956',
-    firstName: 'Daniel',
-    lastName: 'Ufeli',
-    password: '$2a$10$Pei8CV/I0Z3BMFVJuJClaePYmvc.tKnaGK3xFXKJoTTjul84exLfe',
-    address: '26, Fagbeyiro Street, Alakuko',
-    status: 'verified',
-    isAdmin: true,
-  },
-  {
-    id: 2,
-    email: 'user@quickcredit.com',
-    mobileno: '08082205956',
-    firstName: 'Daniel',
-    lastName: 'Ufeli',
-    password: '$2a$10$Pei8CV/I0Z3BMFVJuJClaePYmvc.tKnaGK3xFXKJoTTjul84exLfe',
-    address: '26, Fagbeyiro Street, Alakuko',
-    status: 'verified',
-    isAdmin: false,
-  },
-  {
-    id: 3,
-    email: 'user1@quickcredit.com',
-    mobileno: '08082205956',
-    firstName: 'Daniel',
-    lastName: 'Ufeli',
-    password: '$2a$10$Pei8CV/I0Z3BMFVJuJClaePYmvc.tKnaGK3xFXKJoTTjul84exLfe',
-    address: '26, Fagbeyiro Street, Alakuko',
-    status: 'verified',
-    isAdmin: false,
-  },
-];
+import users from '../db/Users';
 
 class User {
   constructor(email, mobileno, firstName, lastName, password, address) {
@@ -53,6 +19,18 @@ class User {
 
   static fetchAll() {
     return users;
+  }
+
+  static currentUser(cemail) {
+    return users.find(e => e.email === cemail);
+  }
+
+  static updateUserStatus(user, userstatus) {
+    Object.assign(user, { status: userstatus });
+  }
+
+  static userById(userId) {
+    return users.find(e => e.id === userId);
   }
 }
 
