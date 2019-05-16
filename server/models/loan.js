@@ -63,6 +63,10 @@ class Loan {
   static fetchAll() {
     return loans;
   }
+
+  static singleLoan(lemail) {
+    loans.find(l => l.email === lemail);
+  }
 }
 
 export default Loan;

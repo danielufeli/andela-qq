@@ -16,4 +16,9 @@ export default class userObjects {
     const user = User.currentUser(req.body.email);
     return user;
   }
+
+  static getUsersId(req) {
+    const user = User.userById(req.user.id);
+    return user;
+  }
 }

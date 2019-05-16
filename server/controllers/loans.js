@@ -1,56 +1,34 @@
 import Loan from '../models/loan';
 import Repayment from '../models/repayment';
-import getUserById from '../helpers/getuserid';
-import currentLoan from '../helpers/currentLoan';
 import getSpecificLoan from '../helpers/specificloan';
 import notPaid from '../helpers/notpaid';
 import repaymentHistory from '../helpers/repaymenthistory';
+import currentLoan from '../middleware/currentLoan';
+import userObjects from '../middleware/userObjects';
+import loanObjects from '../middleware/loanObjects';
 
 
 class loansController {
   static createLoan(req, res) {
-    const userId = req.user.id;
-    const user = getUserById(userId);
+    const user = userObjects.getUsersId(req);
     let loan = currentLoan(user.email);
-    if (loan && loan.status === 'pending') {
-      return res.status(400).json({ message: `You have a ${loan.status} loan with us` });
-    }
-    if (loan && loan.status === 'approved' && loan.repaid === false) {
-      return res.status(400).json({ message: 'Your loan is yet to be repaid' });
-    }
-    const loanamount = parseFloat(req.body.amount);
-    const loantenor = Number(req.body.tenor);
-    const loaninterest = parseFloat(5 / 100) * loanamount;
-    const loanpaymentInstallment = (loanamount + loaninterest) / loantenor;
-    const loanbalance = loanpaymentInstallment * loantenor;
-    loan = new Loan(
-      user.email,
-      loantenor,
-      parseFloat(loanamount).toFixed(2),
-      parseFloat(loanpaymentInstallment).toFixed(2),
-      parseFloat(loanbalance).toFixed(2),
-      parseFloat(loaninterest).toFixed(2),
-    );
-    loan.save();
-    const {
-      firstName, lastName, email,
-    } = user;
-    const {
-      id, status, tenor, amount, paymentInstallment, balance, interest,
-    } = loan;
+    if (loan && loan.status === 'pending') return res.status(400).json({ status: 400, message: `You have a ${loan.status} loan with us` });
+    if (loan && loan.status === 'approved' && loan.repaid === false) return res.status(400).json({ status: 400, message: 'Your loan is yet to be repaid' });
+    loan = loanObjects.newLoan(req);
+    const { firstName, lastName, email } = user;
     return res.status(201).json({
       status: 201,
       data: {
-        id,
+        id: loan.id,
         firstName,
         lastName,
         email,
-        tenor,
-        amount,
-        paymentInstallment,
-        status,
-        balance,
-        interest,
+        tenor: loan.tenor,
+        amount: loan.amount,
+        paymentInstallment: loan.paymentInstallment,
+        status: loan.status,
+        balance: loan.balance,
+        interest: loan.interest,
       },
     });
   }
