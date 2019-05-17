@@ -12,8 +12,8 @@ const router = express.Router();
 // @desc Test post route
 // @access Public
 
-router.post('/signup', allValidator(validateUser), checkUser.findUserExist, userController.userSignup);
+router.post('/signup', allValidator(validateUser), userController.userSignup);
 
-router.post('/signin', allValidator(validateSignin), checkUser.findUserNotExist, userController.userSignin);
+router.post('/signin', allValidator(validateSignin), userController.userSignin);
 
 export default router;

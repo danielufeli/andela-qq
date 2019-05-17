@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
-import User from '../models/user';
+import userModel from '../models/userModel';
 import authtok from '../helpers/authtok';
 import userObjects from '../middleware/userObjects';
+import db from '../db/index';
 
 dotenv.config();
 
@@ -20,30 +21,18 @@ class userController {
    * @returns
    * @memberof userController
    */
-  static userSignup(req, res) {
+  static async userSignup(req, res) {
     const hash = authtok.hashPassword(req.body.password);
-    const user = new User(
-      req.body.email,
-      req.body.mobileno,
-      req.body.firstName,
-      req.body.lastName,
-      hash,
-      req.body.address,
-    );
-    user.save();
-    const {
+    const values = userObjects.newUser(hash, req);
+    const { rows } = await db.query(userModel.createUser, values);
+    const [{
       id, firstName, lastName, email, mobileno,
-    } = user;
+    }] = rows;
     const userToken = authtok.generateToken('');
-    return res.status(201).json({
+    res.status(201).json({
       status: 201,
       data: {
-        token: userToken,
-        id,
-        firstName,
-        lastName,
-        mobileno,
-        email,
+        token: userToken, id, firstName, lastName, mobileno, email,
       },
     });
   }
