@@ -6,7 +6,7 @@ import adminusers from './adminusers';
 import loans from './loans';
 import swaggerSpec from '../config/swagger';
 import winston from '../config/winston';
-import erroring from '../middleware/error';
+import error from '../middleware/error';
 
 export default (app) => {
   app.use(morgan('combined', { stream: winston.stream }));
@@ -16,5 +16,5 @@ export default (app) => {
   app.use('/api/v1/users', adminusers);
   app.use('/api/v1/loans', loans);
   app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-  app.use(erroring);
+  app.use(error);
 };
