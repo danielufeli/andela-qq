@@ -14,6 +14,6 @@ const router = express.Router();
 
 router.post('/signup', allValidator(validateUser), userController.userSignup);
 
-router.post('/signin', allValidator(validateSignin), userController.userSignin);
+router.post('/signin', allValidator(validateSignin), checkUser.findUserNotExist, userController.userSignin);
 
 export default router;

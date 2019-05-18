@@ -54,7 +54,8 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "start:dev": "nodemon --exec babel-node server/index.js",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "migrate": "babel-node server/db/db.js"
   },
   "engines": {
     "node": "12.0.0"

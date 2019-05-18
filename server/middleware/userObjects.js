@@ -14,12 +14,9 @@ export default class userObjects {
     return user;
   }
 
-  static async getUser(req) {
-    const values = [
-      req.body.email,
-    ];
-    const { rows } = await db.query(userModel.currentUser, values);
-    return rows;
+  static getUser(req) {
+    const user = User.currentUser(req.body.email);
+    return user;
   }
 
   static async getUserNo(req) {

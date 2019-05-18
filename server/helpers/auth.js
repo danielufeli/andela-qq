@@ -15,7 +15,7 @@ const auth = {
       }
       req.user = {
         id: decoded.userid,
-        isAdmin: decoded.admin,
+        isadmin: decoded.admin,
       };
       return next();
     } catch (ex) {
