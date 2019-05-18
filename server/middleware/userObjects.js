@@ -1,6 +1,6 @@
 import User from '../models/user';
 import userModel from '../models/userModel';
-import db from '../db/index';
+import db from '../db';
 
 export default class userObjects {
   static singleUser(req) {

@@ -13,10 +13,10 @@ describe('Test signup endpoints', () => {
       .send(userInfo.signup)
       .end((err, res) => {
         res.status.should.be.equal(201);
-        assert.equal((res.body.data.firstName), 'Daniel');
-        assert.equal((res.body.data.lastName), 'Ufeli');
-        assert.equal((res.body.data.mobileno), '08082205956');
-        assert.equal((res.body.data.email), 'danielufeli@yahoo.com');
+        assert.equal((res.body.data.firstname), 'Daniel');
+        assert.equal((res.body.data.lastname), 'Ufeli');
+        assert.equal((res.body.data.mobileno), '0808220595611');
+        assert.equal((res.body.data.email), 'danielufeli11@yahoo.com');
         res.body.data.should.have.property('token');
         done();
       });

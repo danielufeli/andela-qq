@@ -5,7 +5,7 @@ const userModel = {
     returning *`,
   currentUser: 'SELECT * FROM users WHERE email = $1',
   getUserById: 'SELECT * FROM users WHERE id = $1',
-  updateStatus: 'UPDATE users SET status = $1 WHERE id = $2 returning id, email, status',
+  updateStatus: 'UPDATE users SET status = $1 WHERE id = $2 returning *',
 };
 
 export default userModel;
