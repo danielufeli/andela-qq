@@ -88,22 +88,14 @@ class loansController {
       loan.paymentInstallment,
     );
     repayment.save();
-    const {
-      amount, paymentInstallment, balance,
-    } = loan;
+    const { amount, paymentInstallment, balance } = loan;
     const {
       id, loanId, paidAmount, createdOn,
     } = repayment;
     return res.status(201).json({
       status: 201,
       data: {
-        id,
-        loanId,
-        createdOn,
-        amount,
-        monthlyInstallment: paymentInstallment,
-        paidAmount,
-        balance,
+        id, loanId, createdOn, amount, paymentInstallment, paidAmount, balance,
       },
     });
   }

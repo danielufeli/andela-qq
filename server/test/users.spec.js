@@ -13,7 +13,6 @@ describe('Test signup endpoints', () => {
       .send(userInfo.signup)
       .end((err, res) => {
         res.status.should.be.equal(201);
-        assert.equal((res.body.data.id), 5);
         assert.equal((res.body.data.firstName), 'Daniel');
         assert.equal((res.body.data.lastName), 'Ufeli');
         assert.equal((res.body.data.mobileno), '08082205956');
