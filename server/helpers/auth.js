@@ -10,7 +10,13 @@ const auth = {
       const decoded = await jwt.verify(token, process.env.jwtPrivateKey);
       const { rows } = await db.query(userModel.getUserById, [decoded.userid]);
       if (!rows[0]) { res.status(401).json({ status: 401, message: 'Your token is invalid' }); }
-      req.user = { id: decoded.userid, isadmin: decoded.admin, uEmail: decoded.email };
+      req.user = {
+        id: decoded.userid,
+        isadmin: decoded.admin,
+        email: decoded.uemail,
+        firstname: decoded.fname,
+        lastname: decoded.lname,
+      };
       next();
     } catch (ex) {
       res.status(500).json(ex);

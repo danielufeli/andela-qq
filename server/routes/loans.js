@@ -8,7 +8,6 @@ import allValidator from '../middleware/allValidator';
 import validateLoan from '../helpers/validation/loans';
 import validateLoanStatus from '../helpers/validation/loanstatus';
 import validateAmount from '../helpers/validation/amount';
-import currentLoan from '../middleware/currentLoan';
 
 const router = express.Router();
 

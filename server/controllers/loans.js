@@ -3,34 +3,34 @@ import Repayment from '../models/repayment';
 import getSpecificLoan from '../helpers/specificloan';
 import notPaid from '../helpers/notpaid';
 import repaymentHistory from '../helpers/repaymenthistory';
-import currentLoan from '../middleware/currentLoan';
-import userObjects from '../middleware/userObjects';
 import loanObjects from '../middleware/loanObjects';
 
 
 class loansController {
-  static createLoan(req, res) {
-    const user = userObjects.getUsersId(req);
-    let loan = currentLoan(user.email);
-    if (loan && loan.status === 'pending') return res.status(400).json({ status: 400, message: `You have a ${loan.status} loan with us` });
-    if (loan && loan.status === 'approved' && loan.repaid === false) return res.status(400).json({ status: 400, message: 'Your loan is yet to be repaid' });
-    loan = loanObjects.newLoan(req);
-    const { firstName, lastName, email } = user;
-    return res.status(201).json({
-      status: 201,
-      data: {
-        id: loan.id,
-        firstName,
-        lastName,
-        email,
-        tenor: loan.tenor,
-        amount: loan.amount,
-        paymentInstallment: loan.paymentInstallment,
-        status: loan.status,
-        balance: loan.balance,
-        interest: loan.interest,
-      },
-    });
+  static async createLoan(req, res) {
+    try {
+      let loan = await loanObjects.currentLoan(req, res);
+      loan = await loanObjects.newLoan(req);
+      const { firstname, lastname, email } = req.user;
+      const {
+        id, tenor, amount, paymentinstallment, status, balance, interest,
+      } = loan;
+      return res.status(201).json({
+        status: 201,
+        data: {
+          id,
+          firstname,
+          lastname,
+          email,
+          tenor,
+          amount,
+          paymentinstallment,
+          status,
+          balance,
+          interest,
+        },
+      });
+    } catch (error) { return error; }
   }
 
   static specificLoans(req, res) {
