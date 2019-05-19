@@ -30,7 +30,7 @@ class userController {
       const {
         id, isadmin, firstname, lastname, email,
       } = rows[0];
-      const userToken = authtok.generateToken(id, isadmin);
+      const userToken = authtok.generateToken(id, isadmin, email, firstname, lastname);
       res.status(201).json({
         status: 201,
         data: {
@@ -60,7 +60,7 @@ class userController {
       const {
         id, firstname, lastname, mobileno, email, isadmin,
       } = result;
-      const userToken = authtok.generateToken(id, isadmin, email);
+      const userToken = authtok.generateToken(id, isadmin, email, firstname, lastname);
       return res.status(200).json({
         status: 200,
         data: {

@@ -10,9 +10,9 @@ const authtok = {
   comparePassword(hashPassword, password) {
     return bcrypt.compareSync(password, hashPassword);
   },
-  generateToken(id, isadmin, email) {
+  generateToken(id, isadmin, email, firstname, lastname) {
     const token = jwt.sign({
-      userid: id, admin: isadmin, uEmail: email,
+      userid: id, admin: isadmin, uemail: email, fname: firstname, lname: lastname,
     }, process.env.jwtPrivateKey);
     return token;
   },
