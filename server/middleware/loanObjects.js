@@ -8,6 +8,11 @@ export default class loanObjects {
     return loan;
   }
 
+  static notPaid(loans, s, r) {
+    const repaid = loans.filter(v => (v.status === s && v.repaid === r));
+    return repaid;
+  }
+
   static async currentLoan(req, res) {
     if (req.user.isadmin === true) return res.status(409).json({ status: 409, message: 'You cannot apply for Loan as an Admin' });
     const { rows } = await db.query(loanModel.getLoanByEmail, [req.user.email]);
