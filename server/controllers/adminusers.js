@@ -18,7 +18,6 @@ class adminUserController {
       const { rows } = await db.query(userModel.currentUser, [req.params.useremail]);
       const user = rows[0];
       if (!user) { res.status(404).json({ status: 404, message: `User with the email: ${req.params.useremail} is Not Found` }); }
-      if (user.status === 'verified') { res.status(409).json({ status: 409, message: `User with the email: ${req.params.useremail} is already verified` }); }
       const values = [req.body.status || user.status, user.id];
       const result = await db.query(userModel.updateStatus, values);
       const {
