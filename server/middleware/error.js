@@ -9,9 +9,9 @@ export default (err, req, res, next) => {
   });
 
   winston.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
-  res.status(err.status || 500);n
+  res.status(err.status || 500);
   res.json({
-    message: err.message,
+    message: 'Something Went Wrong Contact The Administrator',
     error: err,
   });
 };
