@@ -40,22 +40,19 @@ class loansController {
     return res.status(200).json({ status: 200, data: loans });
   }
 
-  static adminApproveLoans(req, res) {
-    const loan = getSpecificLoan(Number(req.params.loanid));
+  static async adminApproveLoans(req, res) {
+    const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
+    const loan = rows[0];
     if (!loan) return res.status(404).json({ message: 'No Loan Application Available' });
-    Object.assign(loan, { status: req.body.status });
+    const values = [req.body.status || loan.status, req.params.loanid];
+    const updatedLoan = await db.query(loanModel.updateStatus, values);
     const {
-      id, amount, tenor, status, paymentInstallment, interest,
-    } = loan;
+      id, amount, tenor, status, paymentinstallment, interest,
+    } = updatedLoan.rows[0];
     return res.status(200).json({
       status: 200,
       data: {
-        loanId: id,
-        loanAmount: amount,
-        tenor,
-        status,
-        monthlyInstallment: paymentInstallment,
-        interest,
+        loanId: id, amount, tenor, status, paymentinstallment, interest,
       },
     });
   }
