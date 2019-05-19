@@ -4,42 +4,29 @@ import getSpecificLoan from '../helpers/specificloan';
 import notPaid from '../helpers/notpaid';
 import repaymentHistory from '../helpers/repaymenthistory';
 import loanObjects from '../middleware/loanObjects';
+import db from '../db';
+import loanModel from '../models/loanModel';
 
 
 class loansController {
   static async createLoan(req, res) {
+    if (req.user.isadmin === true) return res.status(401).json({ status: 401, message: 'You cannot apply for Loan as an Admin' });
     try {
-      let loan = await loanObjects.currentLoan(req, res);
-      loan = await loanObjects.newLoan(req);
-      const { firstname, lastname, email } = req.user;
-      const {
-        id, tenor, amount, paymentinstallment, status, balance, interest,
-      } = loan;
-      return res.status(201).json({
-        status: 201,
-        data: {
-          id,
-          firstname,
-          lastname,
-          email,
-          tenor,
-          amount,
-          paymentinstallment,
-          status,
-          balance,
-          interest,
-        },
-      });
+      const { rows } = await db.query(loanModel.getLoanByEmail, [req.user.email]);
+      const index = rows.length - 1;
+      const loan = rows[index];
+      if (loan && loan.status === 'pending') return res.status(409).json({ status: 409, message: `You have a ${loan.status} loan with us` });
+      if (loan && loan.status === 'approved' && loan.repaid === false) return res.status(409).json({ status: 409, message: 'Your loan is yet to be repaid' });
+      const data = await loanObjects.newLoan(req);
+      return res.status(201).json({ status: 201, data });
     } catch (error) { return error; }
   }
 
-  static specificLoans(req, res) {
-    const loan = getSpecificLoan(Number(req.params.loanid));
-    if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
-    return res.status(200).json({
-      status: 200,
-      data: loan,
-    });
+  static async specificLoans(req, res) {
+    const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
+    const loan = rows[0];
+    if (!loan) return res.status(404).json({ status: 404, message: 'The loan application with the given ID was not found' });
+    return res.status(200).json({ status: 200, data: loan });
   }
 
   static allLoans(req, res) {

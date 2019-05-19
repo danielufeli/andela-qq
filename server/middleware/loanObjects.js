@@ -3,7 +3,7 @@ import db from '../db';
 
 export default class loanObjects {
   static async getSingleLoan(req) {
-    const { rows } = await db.query(loanModel.getLoanById, [req.params.loanid]);
+    const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
     const loan = rows[0];
     return loan;
   }
@@ -17,7 +17,7 @@ export default class loanObjects {
     return loan;
   }
 
-  static async newLoan(req) {
+  static newLoanValues(req) {
     const loanamount = parseFloat(req.body.amount);
     const loantenor = Number(req.body.tenor);
     const loaninterest = parseFloat(5 / 100) * loanamount;
@@ -31,8 +31,28 @@ export default class loanObjects {
       parseFloat(loanbalance).toFixed(2),
       parseFloat(loaninterest).toFixed(2),
     ];
-    const { rows } = await db.query(loanModel.createLoan, values);
-    const loan = rows[0];
-    return loan;
+    return values;
+  }
+
+  static async newLoan(req) {
+    const values = loanObjects.newLoanValues(req);
+    const loans = await db.query(loanModel.createLoan, values);
+    const { firstname, lastname, email } = req.user;
+    const {
+      id, tenor, amount, paymentinstallment, status, balance, interest,
+    } = loans.rows[0];
+    const data = {
+      id,
+      firstname,
+      lastname,
+      email,
+      tenor,
+      amount,
+      paymentinstallment,
+      status,
+      balance,
+      interest,
+    };
+    return data;
   }
 }
