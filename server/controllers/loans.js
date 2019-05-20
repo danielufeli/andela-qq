@@ -1,5 +1,3 @@
-import Repayment from '../models/repayment';
-import getSpecificLoan from '../helpers/specificloan';
 import repaymentHistory from '../helpers/repaymenthistory';
 import loanObjects from '../middleware/loanObjects';
 import db from '../db';
@@ -57,29 +55,23 @@ class loansController {
     });
   }
 
-  static loanRepayments(req, res) {
-    const loan = getSpecificLoan(Number(req.params.loanid));
+  static async loanRepayments(req, res) {
+    const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
+    const loan = rows[0];
     if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
     if (loan && loan.status === 'pending') return res.status(400).json({ message: `The User loan status is still ${loan.status}` });
-    if (Number(req.body.paidAmount) > Number(loan.balance)) return res.status(400).json({ message: `The amount entered is Higher than the users balance of ${loan.balance}` });
-    const newBalance = parseFloat(loan.balance - req.body.paidAmount).toFixed(2);
-    Object.assign(loan, { balance: newBalance });
-    if (newBalance === '0.00') { Object.assign(loan, { repaid: true }); }
-    const repayment = new Repayment(
-      loan.id,
-      parseFloat(req.body.paidAmount).toFixed(2),
-      loan.paymentInstallment,
-    );
-    repayment.save();
-    const { amount, paymentInstallment, balance } = loan;
-    const {
-      id, loanId, paidAmount, createdOn,
-    } = repayment;
+    if (Number(req.body.paidamount) > Number(loan.balance)) return res.status(400).json({ message: `The amount entered is Higher than the users balance of ${loan.balance}` });
+    const newBalance = parseFloat(loan.balance - req.body.paidamount).toFixed(2);
+    const valuesBal = [parseFloat(newBalance).toFixed(2) || loan.balance, req.params.loanid];
+    await db.query(loanModel.updateBalance, valuesBal);
+    if (newBalance === '0.00') {
+      const valuesRepaid = [true || loan.repaid, req.params.loanid];
+      await db.query(loanModel.updateRepaid, valuesRepaid);
+    }
+    const data = await loanObjects.newRepayment(req);
     return res.status(201).json({
       status: 201,
-      data: {
-        id, loanId, createdOn, amount, paymentInstallment, paidAmount, balance,
-      },
+      data,
     });
   }
 

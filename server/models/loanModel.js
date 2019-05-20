@@ -8,6 +8,8 @@ const loanModel = {
   getLoanByEmail: 'SELECT * FROM loans WHERE email = $1',
   getLoanByRepaid: 'SELECT * FROM loans WHERE repaid = $1 & status returning *',
   updateStatus: 'UPDATE loans SET status = $1 WHERE id = $2 returning *',
+  updateBalance: 'UPDATE loans SET balance = $1 WHERE id = $2 returning *',
+  updateRepaid: 'UPDATE loans SET repaid = $1 WHERE id = $2 returning *',
 };
 
 export default loanModel;
