@@ -1,7 +1,7 @@
-import repaymentHistory from '../helpers/repaymenthistory';
 import loanObjects from '../middleware/loanObjects';
 import db from '../db';
 import loanModel from '../models/loanModel';
+import repaymentModel from '../models/repaymentModel';
 
 
 class loansController {
@@ -75,8 +75,14 @@ class loansController {
     });
   }
 
-  static viewAllRepayments(req, res) {
-    const repayments = repaymentHistory(Number(req.params.loanid));
+  static async viewAllRepayments(req, res) {
+    const { email } = req.user;
+    const loan = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
+    if (email !== loan.rows[0].email) return res.status(401).json({ status: 401, error: 'Access Denied, Check the loan ID Entered' });
+    const loans = loan.rows[0];
+    if (!loans) return res.status(400).json({ status: 400, error: 'No Loan Avalable' });
+    const { rows } = await db.query(repaymentModel.getAllRepayments, [Number(req.params.loanid)]);
+    const repayments = rows;
     if (!repayments) return res.status(400).json({ message: 'No Repayment History Found' });
     return res.status(200).json({ status: 200, data: repayments });
   }

@@ -4,6 +4,7 @@ import repaymentModel from '../models/repaymentModel';
 
 export default class loanObjects {
   static async getSingleLoan(req) {
+    console.log(req.params.loanid);
     const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
     const loan = rows[0];
     return loan;

@@ -1,7 +1,7 @@
 const userInfo = {
   signup: {
-    email: 'danielufeli@yahoo.com',
-    mobileno: '07092205956',
+    email: 'yom@yahoo.com',
+    mobileno: '09056678909',
     firstName: 'Daniel',
     lastName: 'Ufeli',
     password: 'Domi@2019',
