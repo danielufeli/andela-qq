@@ -19,7 +19,7 @@ const auth = {
       };
       next();
     } catch (ex) {
-      res.status(500).json(ex);
+      res.status(401).json({ status: 401, message: 'Your token is invalid' });
     }
   },
 };
