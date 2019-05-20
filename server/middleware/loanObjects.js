@@ -1,5 +1,6 @@
 import loanModel from '../models/loanModel';
 import db from '../db';
+import repaymentModel from '../models/repaymentModel';
 
 export default class loanObjects {
   static async getSingleLoan(req) {
@@ -57,6 +58,24 @@ export default class loanObjects {
       status,
       balance,
       interest,
+    };
+    return data;
+  }
+
+  static async newRepayment(req) {
+    const loans = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
+    const postValues = [
+      loans.rows[0].id,
+      parseFloat(req.body.paidamount).toFixed(2),
+      loans.rows[0].paymentinstallment,
+    ];
+    const repayment = await db.query(repaymentModel.createRepayment, postValues);
+    const { amount, paymentinstallment, balance } = loans.rows[0];
+    const {
+      id, loanid, paidamount, createdon,
+    } = repayment.rows[0];
+    const data = {
+      id, loanid, createdon, amount, paymentinstallment, paidamount, balance,
     };
     return data;
   }
