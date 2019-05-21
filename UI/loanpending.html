@@ -10,25 +10,27 @@
   </head>
 
   <body>
-    <article>
+    <div class="fullwidth">
       <div class="inner-header">
         <h1>User Dashboard</h1>
       </div>
 
       <main>
-        <div class="side-content">
-          <div class="sidebar">
-            <div class="sidenav">
-              <ul>
-                  <li><a href="dashboard.html">Dashboard</a></li>
-                  <li><a href="editprofile.html">Edit Profile</a></li>
-                  <li><a href="appyforloan.html">Apply for Loan</a></li>
-                  <li><a href="viewloanhistory.html">Veiw Loan History</a></li>
-                  <li><a href="index.html">Logout</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="dashcontent">
+          <div class="container">
+              <div class="side-content">
+                    <button class="openbtn" onclick="openNav()">&#9776;</button> 
+                    <div id="dashSidebar" class="sidebar">
+                    <ul>
+                      <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
+                      <li><a href="dashboard.html">Dashboard</a></li>
+                      <li><a href="editprofile.html">Edit Profile</a></li>
+                      <li><a href="appyforloan.html">Apply for Loan</a></li>
+                      <li><a href="viewloanhistory.html">Veiw Loan History</a></li>
+                      <li><a href="index.html">Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="dashcontent" id="main">
             <div class="main-widget">
               <p>
                 Thank you for Submitting you Loan Application,
@@ -52,6 +54,7 @@
       <div class="footer-copy">
         <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
       </div>
-    </article>
+    </div>
   </body>
+  <script src="assets/js/sidemenu.js"></script>
 </html>
