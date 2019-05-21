@@ -9,36 +9,35 @@
   </head>
 
   <body>
-    <article>
+    <div class="fullwidth">
       <div class="inner-header">
         <h1>User Dashboard</h1>
       </div>
 
       <main>
-        <div class="side-content">
-          <div class="sidebar">
-            <div class="sidenav">
-              <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="editprofile.html">Edit Profile</a></li>
-                <li><a href="appyforloan.html">Apply for Loan</a></li>
-                <li><a href="viewloanhistory.html">Veiw Loan History</a></li>
-                <li><a href="index.html">Logout</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="dashcontent">
+          <div class="container">
+              <div class="side-content">
+                    <button class="openbtn" onclick="openNav()">&#9776;</button> 
+                    <div id="dashSidebar" class="sidebar">
+                    <ul>
+                      <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
+                      <li><a href="dashboard.html">Dashboard</a></li>
+                      <li><a href="editprofile.html">Edit Profile</a></li>
+                      <li><a href="appyforloan.html">Apply for Loan</a></li>
+                      <li><a href="viewloanhistory.html">Veiw Loan History</a></li>
+                      <li><a href="index.html">Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="dashcontent" id="main">
             <div class="main-widget">
               <div class="login-form">
                 <h1>Edit Profile</h1>
-                <input type="text" id="fname" placeholder="First Name" value="Daniel" required />
-                <input type="text" id="lname" placeholder="Last Name" value="Ufeli" required />
-                <input type="text" id="phoneno" placeholder="Mobile Phone" value="08082205956" required />
-                <input type="text" id="address" placeholder="Address" value="26, Fagbeyiro Str. Alakuko, Lagos" required />
-                <input type="email" id="email" placeholder="E-mail" value="danielufeli@yahoo.com" required />
-                <input type="text" id="username" placeholder="Username" value="danielufeli" required />
-                <input type="password" id="password" placeholder="Change Password" required />
-                <input type="password" id="cpassword" placeholder="Confirm Password" required />
+                <p><input type="text" id="fname" placeholder="First Name" value="Daniel" required />
+                  <input type="text" id="lname" placeholder="Last Name" value="Ufeli" required /></p>
+                <p><input type="text" id="phoneno" placeholder="Mobile Phone" value="08082205956" required /> <input type="text" id="address" placeholder="Address" value="26, Fagbeyiro Str. Alakuko, Lagos" required /></p>
+                <p><input type="email" id="email" placeholder="E-mail" value="danielufeli@yahoo.com" required /> <input type="text" id="username" placeholder="Username" value="danielufeli" required /></p>
+                <p><input type="password" id="password" placeholder="Change Password" required /> <input type="password" id="cpassword" placeholder="Confirm Password" required /></p>
                 <button class="btnsign">Submit</button>
               </div>
             </div>
@@ -58,6 +57,7 @@
       <div class="footer-copy">
         <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
       </div>
-    </article>
+    </div>
   </body>
+  <script src="assets/js/sidemenu.js"></script>
 </html>

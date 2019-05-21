@@ -9,30 +9,31 @@
   </head>
 
   <body>
-    <article>
+      <div class="fullwidth">
       <div class="inner-header">
         <h1>Admin Dashboard</h1>
       </div>
 
       <main>
-        <div class="side-content">
-          <div class="sidebar">
-            <div class="sidenav">
-              <ul>
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="verifyclient.html">Verify Client</a></li>
-                <li><a href="viewloans.html">View Loans</a></li>
-                <li><a href="currentloans.html">Current Loans</a></li>
-                <li><a href="repaidloans.html">Repaid Loans</a></li>
-                <li><a href="approveloan.html">Approve/Reject Loans</a></li>
-                <li>
-                  <a href="postloanrepayment.html">Post Loan Repayment</a>
-                </li>
-                <li><a href="../index.html">Logout</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="dashcontent">
+          <div class="container">
+              <div class="side-content">
+                  <button class="openbtn" onclick="openNav()">&#9776;</button> 
+                  <div id="dashSidebar" class="sidebar">
+                    <ul>
+                      <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
+                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="verifyclient.html">Verify Client</a></li>
+                      <li><a href="viewloans.html">View Loans</a></li>
+                      <li><a href="currentloans.html">Current Loans</a></li>
+                      <li><a href="repaidloans.html">Repaid Loans</a></li>
+                      <li><a href="approveloan.html">Approve/Reject Loans</a></li>
+                      <li>
+                        <a href="postloanrepayment.html">Post Loan Repayment</a>
+                      </li>
+                      <li><a href="../index.html">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="dashcontent" id="main">
             <div class="main-widget">
               <table>
                 <caption>
@@ -123,7 +124,7 @@
       <div class="footer-copy">
         <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
       </div>
-    </article>
+      </div>
     <div id="open-modal" class="modal-window">
       <div>
         <a href="#modal-close" title="Close" class="modal-close">
@@ -131,7 +132,7 @@
         </a>
         <h2 class="text-center">Loan Application Details</h2>
         <br />
-        <div class="login-form loan">
+        <div class="loanmodal">
           <p><span class="tit">Created On:</span> 04/04/2019</p>
           <p><span class="tit">User:</span> John Smith</p>
           <p><span class="tit">Amount:</span> ₦10,000.00</p>
@@ -144,5 +145,7 @@
         </div>
       </div>
     </div>
+  </div>
   </body>
+  <script src="../assets/js/sidemenu.js"></script>
 </html>
