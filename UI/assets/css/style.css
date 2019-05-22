@@ -637,11 +637,16 @@ table th {
   }
 }
 @media all and (max-width: 800px) {
+<<<<<<< HEAD
   .banner-text-items p {
     padding-right: 0; 
   }
   .testimonial-widget{
     min-height: 100%;
+=======
+  .testimonial-widget{
+    min-height: 0%;
+>>>>>>> cc2e0803b93fc46fe5adca199336f9acccf3b03c
   }
   .main-nav{
     display: block;
