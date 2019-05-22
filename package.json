@@ -50,12 +50,12 @@
   "scripts": {
     "build": "babel server --out-dir dist",
     "start": "node dist/index.js",
-    "test": "mocha --require @babel/register server/test/**/*.spec.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "test": "mocha --require @babel/register server/test/**/*.spec.js --timeout 10000 --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls --timeout 10000 --exit",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test --timeout 10000 --exit",
     "start:dev": "nodemon --exec babel-node server/index.js",
     "heroku-postbuild": "npm run build",
-    "migrate": "babel-node server/db/index.js"
+    "refresh": "babel-node ./server/db/migration dropTables && babel-node ./server/db/migration createTables && babel-node ./server/db/seed seedTables"
   },
   "engines": {
     "node": "12.0.0"

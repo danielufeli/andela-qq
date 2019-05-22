@@ -1,14 +1,14 @@
 const userInfo = {
   signup: {
-    email: 'yom@yahoo.com',
+    email: 'danino_001@yahoo.com',
     mobileno: '09056678909',
-    firstName: 'Daniel',
-    lastName: 'Ufeli',
+    firstName: 'John',
+    lastName: 'Smith',
     password: 'Domi@2019',
     address: '26, Fagbeyiro Street, Alakuko',
   },
   user: {
-    email: 'user@quickcredit.com',
+    email: 'user1@quickcredit.com',
     password: 'Domi@2019',
   },
   repaidUser: {
@@ -18,16 +18,6 @@ const userInfo = {
   adminUser: {
     email: 'admin@quickcredit.com',
     password: 'Domi@2019',
-  },
-  signup2: {
-    email: 'kelly@gmail.com',
-    mobileno: '08082205956',
-    firstName: 'Daniel',
-    lastName: 'Ufeli',
-    password: 'Domi@2019',
-    address: '26, Fagbeyiro Street, Alakuko',
-    status: 'verified',
-    isAdmin: true,
   },
   user2: {
     email: 'kelly@gmail.com',
@@ -50,7 +40,7 @@ const userInfo = {
     address: '26, Fagbeyiro Street, Alakuko',
   },
   ommitedFirstname: {
-    email: 'daniel@daniel.com',
+    email: 'danino_001@yahoo.com',
     mobileno: '08082205956',
     firstName: '',
     lastName: 'Ufeli',
@@ -85,7 +75,7 @@ const userInfo = {
     password: 'Domi@2019',
   },
   email: {
-    email: 'danielufeli@yahoo.com',
+    email: 'danino_001@yahoo.com',
   },
   invalidUser: {
     email: 'danielufeliyahoo.com',

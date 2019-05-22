@@ -8,12 +8,6 @@ const pool = new Pool({
 });
 
 export default {
-  /**
-   * DB Query
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} object
-   */
   query(text, params) {
     return new Promise((resolve, reject) => {
       pool.query(text, params)

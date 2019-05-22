@@ -28,7 +28,7 @@ class loansController {
   static async allLoans(req, res) {
     const { rows } = await db.query(loanModel.getAllLoans);
     const loans = rows;
-    if (loans && loans.length === 0) return res.status(400).json({ message: 'No Loan Application Available' });
+    if (loans && loans.length === 0) return res.status(404).json({ status: 404, message: 'No Loan Application Available' });
     const { status } = req.query;
     const { repaid } = req.query;
     if ((status !== undefined) && (repaid !== undefined)) {
@@ -41,7 +41,7 @@ class loansController {
   static async adminApproveLoans(req, res) {
     const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
     const loan = rows[0];
-    if (!loan) return res.status(404).json({ message: 'No Loan Application Available' });
+    if (!loan) return res.status(404).json({ status: 404, message: 'No Loan Application Available' });
     const values = [req.body.status || loan.status, req.params.loanid];
     const updatedLoan = await db.query(loanModel.updateStatus, values);
     const {
@@ -58,9 +58,9 @@ class loansController {
   static async loanRepayments(req, res) {
     const { rows } = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
     const loan = rows[0];
-    if (!loan) return res.status(404).json({ message: 'The loan application with the given ID was not found' });
-    if (loan && loan.status === 'pending') return res.status(400).json({ message: `The User loan status is still ${loan.status}` });
-    if (Number(req.body.paidamount) > Number(loan.balance)) return res.status(400).json({ message: `The amount entered is Higher than the users balance of ${loan.balance}` });
+    if (!loan) return res.status(404).json({ status: 404, message: 'The loan application with the given ID was not found' });
+    if (loan && loan.status === 'pending') return res.status(400).json({ status: 400, message: `The User loan status is still ${loan.status}` });
+    if (Number(req.body.paidamount) > Number(loan.balance)) return res.status(400).json({ status: 400, message: `The amount entered is Higher than the users balance of ${loan.balance}` });
     const newBalance = parseFloat(loan.balance - req.body.paidamount).toFixed(2);
     const valuesBal = [parseFloat(newBalance).toFixed(2) || loan.balance, req.params.loanid];
     await db.query(loanModel.updateBalance, valuesBal);
