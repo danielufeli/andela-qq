@@ -50,7 +50,7 @@
   "scripts": {
     "build": "babel server --out-dir dist",
     "start": "node dist/index.js",
-    "test": "npm run refresh && mocha --require @babel/register server/test/**/*.spec.js",
+    "test": "npm run refresh && mocha --require @babel/register server/test/**/*.spec.js  --timeout 10000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "start:dev": "nodemon --exec babel-node server/index.js",
