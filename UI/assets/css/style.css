@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
 }
@@ -9,11 +9,17 @@ body {
     "Lucida Sans", Arial, sans-serif;
   height: 100%;
 }
-
-.main-nav {
+.container{
+  width: 80%;
+}
+nav{
+  width: 100%;
   background: #15549a;
+}
+.main-nav {
   display: -webkit-flex;
   display: flex;
+  align-items: center;
 }
 .main-nav{
   list-style: none;
@@ -63,12 +69,13 @@ body {
   text-transform: uppercase;
 }
 .btnverify {
-  width: 85px;
+  text-align: center;
+  width: 80px;
   background-color: #15549a;
   color: #fff;
   display: inline-block;
-  font-size: 11px;
-  padding: 10px 10px;
+  font-size: 12px;
+  padding: 5px 5px;
   text-decoration: none;
   border-radius: 3px;
 }
@@ -140,6 +147,7 @@ body {
 }
 
 .banner-text {
+  text-align: left;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -158,8 +166,17 @@ body {
   text-transform: uppercase;
 }
 .banner-text-items p {
+  text-align: left;
   font-size: 1.2em;
-  width: 50%;
+  padding-right: 500px; 
+}
+.fullwidth {
+  width: 100%;
+  min-height: 100%;
+  align-items: stretch;
+}
+.loanmodal p {
+  padding-bottom: 5px;
 }
 article {
   min-height: 100%;
@@ -181,7 +198,8 @@ main {
   font-weight: 500;
 }
 .main-widget {
-  padding: 20px;
+  min-width: 100%;
+  padding: 10px;
   border: 1px solid #dee4ee;
   -webkit-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
   -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
@@ -218,7 +236,7 @@ main {
   height: 60px;
   border-radius: 100px;
   color: #15549a;
-  margin: 0 auto 0 auto;
+  margin: -10px auto 20px auto;
   padding: 10px;
   text-align: center;
   line-height: 2.5;
@@ -320,11 +338,12 @@ footer {
   flex-flow: row wrap;
   padding: 5% 0;
   color: #fff;
-  background-color: #1e2127;
+  background: #1e2127;
   padding: 10px;
   flex-shrink: 0;
 }
 .footer-widget {
+  background: #1e2127;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -341,8 +360,9 @@ footer {
   text-align: center;
 }
 #login-form {
+  width: 400px;
   text-align: center;
-  padding: 50px 0px 50px 0px;
+  padding: 20px 0px 20px 0px;
   border: 1px solid #dee4ee;
   -webkit-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
   -moz-box-shadow: 0px 4px 16px 3px rgba(213, 221, 234, 0.5);
@@ -365,21 +385,9 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.login-form p {
-  margin: 0;
-  padding-top: 2%;
+.plogintext{
+  padding: 10px 0px 10px 0px;
 }
-
-.login-form input {
-  min-width: 70%;
-  margin: 10px;
-}
-
-.signup-form input {
-  width: 1.5em;
-  margin: 10px;
-}
-
 .loan input {
   min-width: 10%;
   margin: 10px;
@@ -390,6 +398,7 @@ input[type="email"],
 input[type="number"],
 select,
 input[type="password"] {
+  width: 300px;
   border: none;
   border-bottom: 1px solid #ffffff;
   background: #fff;
@@ -408,37 +417,72 @@ input[type="password"] {
   color: #2E76CF;
 }
 
-.side-content {
+.login-form p {
+  margin: 20px;
+}
+
+/* .side-content {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   flex-shrink: 0;
-}
+} */
+
 .sidebar {
-  flex: 1;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
   background-color: #15549a;
-  color: #fff;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
-.sidenav ul li {
-  text-align: center;
-  padding: 10px;
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar ul li {
   border-bottom: 1px solid #2E76CF;
   list-style-type: none;
 }
-.sidenav ul li:hover {
+.sidebar ul li:hover {
   background-color: #2E76CF;
   color: #fff;
 }
-.sidebar a {
-  text-decoration: none;
-  color: #fff;
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #15549a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
 }
 .dashcontent {
-  flex: 3;
+  flex: 1;
   background-color: #fff;
   padding: 3% 3%;
   text-align: center;
@@ -471,7 +515,7 @@ table th,
 table td {
   padding: 0.625em;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 table th {
@@ -540,6 +584,11 @@ table th {
 }
 
 @media all and (max-width: 500px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+  .banner-text-items p {
+    padding-right: 0px; 
+  }
   html {
     display: table;
   }
@@ -588,6 +637,9 @@ table th {
   }
 }
 @media all and (max-width: 800px) {
+  .banner-text-items p {
+    padding-right: 0; 
+  }
   .testimonial-widget{
     min-height: 100%;
   }

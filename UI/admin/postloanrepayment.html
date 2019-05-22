@@ -9,16 +9,25 @@
   </head>
 
   <body>
-    <article>
+    <div class="fullwidth">
       <div class="inner-header">
         <h1>Admin Dashboard</h1>
       </div>
 
       <main>
-        <div class="side-content">
-          <div class="sidebar">
-            <div class="sidenav">
+        <div class="container">
+          <div class="side-content">
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+            <div id="dashSidebar" class="sidebar">
               <ul>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="closebtn"
+                    onclick="closeNav()"
+                    >&times;</a
+                  >
+                </li>
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="verifyclient.html">Verify Client</a></li>
                 <li><a href="viewloans.html">View Loans</a></li>
@@ -31,84 +40,84 @@
                 <li><a href="../index.html">Logout</a></li>
               </ul>
             </div>
-          </div>
-          <div class="dashcontent">
-            <div class="main-widget">
-              <table>
-                <caption>
-                  Post Loan Repayment Transaction
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Created on</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Monthly Installment</th>
-                    <th scope="col">Paid Amount</th>
-                    <th scope="col">Balance</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td data-label="Id">1</td>
-                    <td data-label="Created On">05/10/2019</td>
-                    <td data-label="User">Jolade Jayeola</td>
-                    <td data-label="Amount">₦5,000.00</td>
-                    <td data-label="Monthly Installment">₦5,250.00</td>
-                    <td data-label="Paid Amount">₦0.00</td>
-                    <td data-label="Balance">₦5,250.00</td>
-                    <td data-label="Actions">
-                      <a href="#open-modal" class="btnverify">
-                        Post
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Id">2</td>
-                    <td data-label="Created On">05/10/2019</td>
-                    <td data-label="User">Jolade Jayeola</td>
-                    <td data-label="Amount">₦5,000.00</td>
-                    <td data-label="Monthly Installment">₦5,250.00</td>
-                    <td data-label="Paid Amount">₦0.00</td>
-                    <td data-label="Balance">₦5,250.00</td>
-                    <td data-label="Actions">
-                      <a href="#open-modal" class="btnverify">
-                        Post
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Id">3</td>
-                    <td data-label="Created On">05/10/2019</td>
-                    <td data-label="User">Jolade Jayeola</td>
-                    <td data-label="Amount">₦5,000.00</td>
-                    <td data-label="Monthly Installment">₦5,250.00</td>
-                    <td data-label="Paid Amount">₦0.00</td>
-                    <td data-label="Balance">₦5,250.00</td>
-                    <td data-label="Actions">
-                      <a href="#open-modal" class="btnverify">
-                        Post
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Id">4</td>
-                    <td data-label="Created On">05/10/2019</td>
-                    <td data-label="User">Jolade Jayeola</td>
-                    <td data-label="Amount">₦5,000.00</td>
-                    <td data-label="Monthly Installment">₦5,250.00</td>
-                    <td data-label="Paid Amount">₦0.00</td>
-                    <td data-label="Balance">₦5,250.00</td>
-                    <td data-label="Actions">
-                      <a href="#open-modal" class="btnverify">
-                        Post
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="dashcontent" id="main">
+              <div class="main-widget">
+                <table>
+                  <caption>
+                    Post Loan Repayment Transaction
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">Created on</th>
+                      <th scope="col">User</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Monthly Installment</th>
+                      <th scope="col">Paid Amount</th>
+                      <th scope="col">Balance</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Id">1</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Monthly Installment">₦5,250.00</td>
+                      <td data-label="Paid Amount">₦0.00</td>
+                      <td data-label="Balance">₦5,250.00</td>
+                      <td data-label="Actions">
+                        <a href="#open-modal" class="btnverify">
+                          Post
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Id">2</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Monthly Installment">₦5,250.00</td>
+                      <td data-label="Paid Amount">₦0.00</td>
+                      <td data-label="Balance">₦5,250.00</td>
+                      <td data-label="Actions">
+                        <a href="#open-modal" class="btnverify">
+                          Post
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Id">3</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Monthly Installment">₦5,250.00</td>
+                      <td data-label="Paid Amount">₦0.00</td>
+                      <td data-label="Balance">₦5,250.00</td>
+                      <td data-label="Actions">
+                        <a href="#open-modal" class="btnverify">
+                          Post
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Id">4</td>
+                      <td data-label="Created On">05/10/2019</td>
+                      <td data-label="User">Jolade Jayeola</td>
+                      <td data-label="Amount">₦5,000.00</td>
+                      <td data-label="Monthly Installment">₦5,250.00</td>
+                      <td data-label="Paid Amount">₦0.00</td>
+                      <td data-label="Balance">₦5,250.00</td>
+                      <td data-label="Actions">
+                        <a href="#open-modal" class="btnverify">
+                          Post
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -126,7 +135,7 @@
       <div class="footer-copy">
         <p>© Copyright 2019 | Quick Credit, All Rights Reserved.</p>
       </div>
-    </article>
+    </div>
     <div id="open-modal" class="modal-window">
       <div class="text-center">
         <a href="#modal-close" title="Close" class="modal-close">
@@ -136,14 +145,33 @@
         <br />
         <div class="login-form">
           <form action="postloanrepayment.html">
-            <input type="text" id="amount" placeholder="Amount" required />
-            <input type="text" id="monthlyInstallment" placeholder="Monthly Installment" required />
-            <input type="text" id="paidAmount" placeholder="Paid Amount" required />
-            <input type="text" id="balance" placeholder="Balance" required />
-            <button class="btnverify">Submut</button>
+            <p>
+              <input type="text" id="amount" placeholder="Amount" required />
+            </p>
+            <p>
+              <input
+                type="text"
+                id="monthlyInstallment"
+                placeholder="Monthly Installment"
+                required
+              />
+            </p>
+            <p>
+              <input
+                type="text"
+                id="paidAmount"
+                placeholder="Paid Amount"
+                required
+              />
+            </p>
+            <p>
+              <input type="text" id="balance" placeholder="Balance" required />
+            </p>
+            <button class="btnverify">Submit</button>
           </form>
         </div>
       </div>
     </div>
   </body>
+  <script src="../assets/js/sidemenu.js"></script>
 </html>
