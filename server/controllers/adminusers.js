@@ -18,7 +18,7 @@ class adminUserController {
           email, firstname, lastname, address, status,
         },
       });
-    } catch (ex) { return ex; }
+    } catch (error) { return res.status(500).json(error); }
   }
 }
 

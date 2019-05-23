@@ -5,7 +5,7 @@ import userModel from '../models/userModel';
 const auth = {
   async verifyToken(req, res, next) {
     const token = req.headers['x-auth-token'];
-    if (!token) { res.status(401).json({ status: 401, message: 'Your token is missing' }); }
+    if (!token) { res.status(401).json({ status: 403, message: 'Your token is missing' }); }
     try {
       const decoded = await jwt.verify(token, process.env.jwtPrivateKey);
       const { rows } = await db.query(userModel.getUserById, [decoded.userid]);
@@ -18,8 +18,9 @@ const auth = {
         lastname: decoded.lname,
       };
       next();
-    } catch (ex) {
+    } catch (error) {
       res.status(401).json({ status: 401, message: 'Your token is invalid' });
+      res.status(500).json(error);
     }
   },
 };
