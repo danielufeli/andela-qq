@@ -7,8 +7,6 @@ services:
 env:
   global:
     - CC_TEST_REPORTER_ID=775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
-    - NODE_ENV=test
-    - SECRET_KEY=mytest
     - DATABASE_URL=postgres://postgres@127.0.0.1:5432/quickcreditdb
 before_script:
   - yarn global add nyc
@@ -16,7 +14,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - psql -c 'create database quickcreditdb;' -U postgres
-  - npm run refresh
 script:
  - npm run coveralls
  - npm run coverage
