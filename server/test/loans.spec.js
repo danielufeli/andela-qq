@@ -13,9 +13,9 @@ describe('Test loan endpoints User', () => {
     const res = await chai.request(server)
       .post('/api/v1/auth/signin')
       .send(userInfo.user);
-    assert.property((res.body), 'status');
-    assert.property((res.body), 'data');
-    assert.property((res.body.data), 'token');
+    res.status.should.be.equal(200);
+    res.body.should.be.a('object');
+    res.body.data.should.have.property('token');
     userToken = res.body.data.token;
   });
   it('should create a loan', async () => {
@@ -23,7 +23,7 @@ describe('Test loan endpoints User', () => {
       .post('/api/v1/loans')
       .set('x-auth-token', userToken)
       .send({ amount: 10000, tenor: 2 });
-    assert.equal((res.body.status), 201);
+    res.status.should.be.equal(201);
     assert.property((res.body), 'data');
   });
   it('Should not allow user to create another loan if status is pending', async () => {
