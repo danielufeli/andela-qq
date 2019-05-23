@@ -10,11 +10,15 @@ import validateAmount from '../helpers/validation/amount';
 
 const router = express.Router();
 
-router.get('', auth.verifyToken, checkIsAdmin, loanController.allLoans);
-router.get('/:loanid', auth.verifyToken, checkIsAdmin, loanController.specificLoans);
-router.get('/:loanid/repayments', auth.verifyToken, loanController.viewAllRepayments);
-router.post('/:loanid/repayment', auth.verifyToken, checkIsAdmin, allValidator(validateAmount), loanController.loanRepayments);
-router.post('', auth.verifyToken, allValidator(validateLoan), loanController.createLoan);
-router.patch('/:loanid', auth.verifyToken, checkIsAdmin, allValidator(validateLoanStatus), loanController.adminApproveLoans);
+const {
+  allLoans, specificLoans, viewAllRepayments, loanRepayments, createLoan, adminApproveLoans,
+} = loanController;
+
+router.get('', auth.verifyToken, checkIsAdmin, allLoans);
+router.get('/:loanid', auth.verifyToken, checkIsAdmin, specificLoans);
+router.get('/:loanid/repayments', auth.verifyToken, viewAllRepayments);
+router.post('/:loanid/repayment', auth.verifyToken, checkIsAdmin, allValidator(validateAmount), loanRepayments);
+router.post('', auth.verifyToken, allValidator(validateLoan), createLoan);
+router.patch('/:loanid', auth.verifyToken, checkIsAdmin, allValidator(validateLoanStatus), adminApproveLoans);
 
 export default router;

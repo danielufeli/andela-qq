@@ -6,8 +6,18 @@ export default class userObjects {
     const values = [
       req.body.mobileno,
     ];
-    const user = await db.query(userModel.currentUser, values);
+    const user = await db.query(userModel.getUserByNo, values);
     return user;
+  }
+
+  static async currentUser(req, res, next) {
+    try {
+      const user = await db.query(userModel.currentUser, [req.body.email]);
+      if (!user.rows.length) { return next(); }
+      return res.status(409).json({ status: 409, message: 'The user with this email has already registered' });
+    } catch (error) {
+      return next(error);
+    }
   }
 
   static newUser(hash, req) {

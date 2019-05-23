@@ -1,4 +1,4 @@
-import chai, { assert } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import server from '../index';
 import userInfo from './userInfo';
@@ -7,20 +7,20 @@ chai.use(chaiHttp);
 chai.should();
 
 let request;
-beforeEach(async () => {
-  request = await chai.request(server);
-});
+
 
 describe('Test signup endpoints', () => {
+  before(() => {
+    request = chai.request(server).keepOpen();
+  });
   it('Should signup a user', async () => {
     const res = await request
       .post('/api/v1/auth/signup/')
       .send(userInfo.signup);
     res.status.should.be.equal(201);
-    assert.equal((res.body.data.firstname), 'John');
-    assert.equal((res.body.data.lastname), 'Smith');
-    assert.equal((res.body.data.email), 'danino_001@yahoo.com');
-    res.body.data.should.have.property('token');
+    res.body.data.firstname.should.be.equal('John');
+    res.body.data.lastname.should.be.equal('Smith');
+    res.body.data.email.should.be.equal('danino_001@yahoo.com');
   });
   it('Should fail if email is ommited', async () => {
     const res = await request
@@ -64,8 +64,6 @@ describe('Test signup endpoints', () => {
     res.status.should.be.equal(400);
     res.body.error.should.have.eql('"address" is not allowed to be empty');
   });
-});
-describe('Test signin endpoints', () => {
   it('Should signin a user', async () => {
     const res = await request
       .post('/api/v1/auth/signin/')

@@ -10,11 +10,16 @@ import error from '../middleware/error';
 
 export default (app) => {
   app.use(morgan('combined', { stream: winston.stream }));
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use('/api/v1/auth', users);
   app.use('/api/v1/users', adminusers);
   app.use('/api/v1/loans', loans);
   app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+  app.use((req, res) => {
+    res.status(404).json({ status: 404, message: 'Sorry, page not found' });
+  });
+
   app.use(error);
 };
