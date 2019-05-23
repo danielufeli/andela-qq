@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import userModel from '../models/userModel';
 import authtok from '../helpers/authtok';
 import userObjects from '../middleware/userObjects';
-import checkDuplicate from '../middleware/mailSignup';
 import db from '../db';
 
 dotenv.config();
@@ -12,6 +11,7 @@ class userController {
     const hash = authtok.hashPassword(req.body.password);
     const values = userObjects.newUser(hash, req);
     try {
+      // await userObjects.checkCurrentUser(res, req);
       const { rows } = await db.query(userModel.createUser, values);
       const {
         id, isadmin, firstname, lastname, email,
@@ -19,12 +19,17 @@ class userController {
       const userToken = authtok.generateToken(id, isadmin, email, firstname, lastname);
       res.status(201).json({
         status: 201,
+        message: `Hi, ${firstname} You have successfully registered`,
         data: {
-          token: userToken, id, firstname, lastname, email,
+          token: userToken,
+          id,
+          firstname,
+          lastname,
+          email,
         },
       });
-    } catch (error) {
-      checkDuplicate(error, res);
+    } catch (err) {
+      res.status(500).json(err);
     }
   }
 
@@ -40,8 +45,14 @@ class userController {
       const userToken = authtok.generateToken(id, isadmin, email, firstname, lastname);
       return res.status(200).json({
         status: 200,
+        message: `Hi, ${firstname} You have successfully logged in`,
         data: {
-          token: userToken, id, firstname, lastname, email, mobileno,
+          token: userToken,
+          id,
+          firstname,
+          lastname,
+          email,
+          mobileno,
         },
       });
     } catch (error) {

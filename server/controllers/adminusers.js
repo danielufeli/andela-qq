@@ -14,8 +14,13 @@ class adminUserController {
       } = result.rows[0];
       return res.status(200).json({
         status: 200,
+        message: `You have successfully verified ${firstname} ${lastname}`,
         data: {
-          email, firstname, lastname, address, status,
+          email,
+          firstname,
+          lastname,
+          address,
+          status,
         },
       });
     } catch (error) { return res.status(500).json(error); }

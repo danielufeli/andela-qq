@@ -14,7 +14,11 @@ class loansController {
       if (loan && loan.status === 'pending') return res.status(409).json({ status: 409, message: `You have a ${loan.status} loan with us` });
       if (loan && loan.status === 'approved' && loan.repaid === false) return res.status(409).json({ status: 409, message: 'Your loan is yet to be repaid' });
       const data = await loanObjects.newLoan(req);
-      return res.status(201).json({ status: 201, data });
+      return res.status(201).json({
+        message: `Thank you ${data.firstname} you have successfully applied for a loan.`,
+        status: 201,
+        data,
+      });
     } catch (error) { return res.status(500).json(error); }
   }
 
@@ -28,7 +32,7 @@ class loansController {
   static async allLoans(req, res) {
     const { rows } = await db.query(loanModel.getAllLoans);
     const loans = rows;
-    if (loans && loans.length === 0) return res.status(404).json({ status: 404, message: 'No Loan Application Available' });
+    if (!loans.length) return res.status(404).json({ status: 404, message: 'No Loan Application Available' });
     const { status } = req.query;
     const { repaid } = req.query;
     if ((status !== undefined) && (repaid !== undefined)) {
@@ -45,12 +49,18 @@ class loansController {
     const values = [req.body.status || loan.status, req.params.loanid];
     const updatedLoan = await db.query(loanModel.updateStatus, values);
     const {
-      id, amount, tenor, status, paymentinstallment, interest,
+      id, email, amount, tenor, status, paymentinstallment, interest,
     } = updatedLoan.rows[0];
     return res.status(200).json({
       status: 200,
+      message: `You have successfully approved a loan for ${email}`,
       data: {
-        loanId: id, amount, tenor, status, paymentinstallment, interest,
+        loanId: id,
+        amount,
+        tenor,
+        status,
+        paymentinstallment,
+        interest,
       },
     });
   }
@@ -71,6 +81,7 @@ class loansController {
     const data = await loanObjects.newRepayment(req);
     return res.status(201).json({
       status: 201,
+      message: 'You have successfully create a loan repayment',
       data,
     });
   }
@@ -80,10 +91,10 @@ class loansController {
     const loan = await db.query(loanModel.getLoanById, [Number(req.params.loanid)]);
     if (email !== loan.rows[0].email) return res.status(401).json({ status: 401, error: 'Access Denied, Check the loan ID Entered' });
     const loans = loan.rows[0];
-    if (!loans) return res.status(400).json({ status: 400, error: 'No Loan Avalable' });
+    if (!loans) return res.status(404).json({ status: 404, error: 'No Loan Avalable' });
     const { rows } = await db.query(repaymentModel.getAllRepayments, [Number(req.params.loanid)]);
     const repayments = rows;
-    if (!repayments) return res.status(400).json({ message: 'No Repayment History Found' });
+    if (!repayments) return res.status(404).json({ status: 404, message: 'No Repayment History Found' });
     return res.status(200).json({ status: 200, data: repayments });
   }
 }

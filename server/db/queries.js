@@ -4,7 +4,7 @@ const createQueries = {
     firstname VARCHAR(100),
     lastname VARCHAR(100),
     email VARCHAR(100) UNIQUE NOT NULL,
-    mobileno VARCHAR(100) UNIQUE NOT NULL,
+    mobileno VARCHAR(100) NOT NULL,
     address VARCHAR(100),
     registered TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     isadmin BOOLEAN DEFAULT FALSE,
