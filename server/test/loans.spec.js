@@ -23,8 +23,7 @@ describe('Test loan endpoints User', () => {
       .post('/api/v1/loans')
       .set('x-auth-token', userToken)
       .send({ amount: 10000, tenor: 2 });
-    res.should.have.status(201);
-    res.body.should.be.a('object');
+    res.status.should.be.equal(201);
   });
   it('Should not allow user to create another loan if status is pending', async () => {
     const res = await chai.request(server)

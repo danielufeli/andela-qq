@@ -15,7 +15,7 @@ class loansController {
       if (loan && loan.status === 'approved' && loan.repaid === false) return res.status(409).json({ status: 409, message: 'Your loan is yet to be repaid' });
       const data = await loanObjects.newLoan(req);
       return res.status(201).json({ status: 201, data });
-    } catch (error) { return error; }
+    } catch (error) { return res.status(500).json(error); }
   }
 
   static async specificLoans(req, res) {
