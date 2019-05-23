@@ -462,3 +462,12 @@
 {"message":"::ffff:127.0.0.1 - - [23/May/2019:09:31:42 +0000] \"POST /api/v1/auth/signin/ HTTP/1.1\" 400 57 \"-\" \"node-superagent/3.8.3\"\n","level":"info"}
 {"message":"::ffff:127.0.0.1 - - [23/May/2019:09:31:42 +0000] \"POST /api/v1/auth/signin/ HTTP/1.1\" 400 54 \"-\" \"node-superagent/3.8.3\"\n","level":"info"}
 {"message":"::ffff:127.0.0.1 - - [23/May/2019:09:31:42 +0000] \"POST /api/v1/auth/signin/ HTTP/1.1\" 400 54 \"-\" \"node-superagent/3.8.3\"\n","level":"info"}
+{"message":"Server Running on port 3000","level":"info"}
+{"message":"::1 - - [23/May/2019:09:38:13 +0000] \"POST /api/v1/auth/signin HTTP/1.1\" 500 50 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"500 - Cannot set headers after they are sent to the client - /api/v1/auth/signin - POST - ::1","level":"error"}
+{"message":"::1 - - [23/May/2019:09:38:23 +0000] \"POST /api/v1/auth/signin HTTP/1.1\" 200 365 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"::1 - - [23/May/2019:09:38:40 +0000] \"POST /api/v1/loans/1/repayment HTTP/1.1\" 401 81 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"::1 - - [23/May/2019:09:38:45 +0000] \"GET /api/v1/loans/ HTTP/1.1\" 200 241 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"::1 - - [23/May/2019:09:39:20 +0000] \"GET /api/v1/loans/ HTTP/1.1\" 200 241 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"::1 - - [23/May/2019:09:39:39 +0000] \"POST /api/v1/auth/signin HTTP/1.1\" 200 363 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
+{"message":"::1 - - [23/May/2019:09:39:55 +0000] \"POST /api/v1/loans/1/repayment HTTP/1.1\" 201 173 \"-\" \"PostmanRuntime/7.13.0\"\n","level":"info"}
