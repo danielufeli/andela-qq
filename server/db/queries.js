@@ -42,7 +42,7 @@ const seedQueries = {
   userTable: `INSERT INTO
   users(firstname, lastname, email, mobileno, address, isadmin, password)
   VALUES('Daniel', 'Ufeli', 'admin@quickcredit.com', '08082205956', '26 fagbeyiro street alakuko', true, '${hashPassword}'),
-  ('James', 'Oniola', 'user1@quickcredit.com', '08105334020', '26 fagbeyiro street alakuko', false, '${hashPassword}'),
+  ('James', 'Oniola', 'user1@quickcredit.com', '08105334020', '26 fagbeyiro street alakuko', false, '$2a$10$Pei8CV/I0Z3BMFVJuJClaePYmvc.tKnaGK3xFXKJoTTjul84exLfe'),
   ('Olanrewaju', 'Julius', 'user2@quickcredit.com', '08037265917', '26 fagbeyiro street alakuko', false, '${hashPassword}')
   `,
 };
