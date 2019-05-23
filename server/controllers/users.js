@@ -7,21 +7,7 @@ import db from '../db';
 
 dotenv.config();
 
-/**
- *
- *
- * @class userController
- */
 class userController {
-  /**
-   *
-   *
-   * @static
-   * @param {*} req
-   * @param {*} res
-   * @returns
-   * @memberof userController
-   */
   static async userSignup(req, res) {
     const hash = authtok.hashPassword(req.body.password);
     const values = userObjects.newUser(hash, req);
@@ -37,20 +23,11 @@ class userController {
           token: userToken, id, firstname, lastname, email,
         },
       });
-    } catch (ex) {
-      checkDuplicate(ex, res);
+    } catch (error) {
+      checkDuplicate(error, res);
     }
   }
 
-  /**
- *
- *
- * @static
- * @param {*} req
- * @param {*} res
- * @returns
- * @memberof userController
- */
   static async userSignin(req, res) {
     try {
       const { rows } = await db.query(userModel.currentUser, [req.body.email]);
@@ -67,8 +44,8 @@ class userController {
           token: userToken, id, firstname, lastname, email, mobileno,
         },
       });
-    } catch (ex) {
-      return ex;
+    } catch (error) {
+      return res.status(500).json(error);
     }
   }
 }

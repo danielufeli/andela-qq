@@ -1,18 +1,7 @@
 import db from '../db';
 import userModel from '../models/userModel';
-/**
- *
- *
- * @class adminUserController
- */
+
 class adminUserController {
-  /**
-   * @static adminVerifyUser
-   * @param {*} req.params.useremail
-   * @param {*} res.body.status
-   * @returns updated users status
-   * @memberof adminUserController
-   */
   static async adminVerifyUser(req, res) {
     try {
       const { rows } = await db.query(userModel.currentUser, [req.params.useremail]);
@@ -29,7 +18,7 @@ class adminUserController {
           email, firstname, lastname, address, status,
         },
       });
-    } catch (ex) { return ex; }
+    } catch (error) { return res.status(500).json(error); }
   }
 }
 

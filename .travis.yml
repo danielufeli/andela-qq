@@ -6,14 +6,12 @@ services:
   - postgresql
 env:
   global:
-    CC_TEST_REPORTER_ID=775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
+    - CC_TEST_REPORTER_ID=775c7d830a0cc3d06e1cbf7fdac0e44dec76c095fc638557647751f51a06d3de
 before_script:
   - yarn global add nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - npm run refresh
 script:
  - npm run coveralls
  - npm run coverage
