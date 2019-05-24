@@ -19,7 +19,7 @@ nav{
 .main-nav {
   display: -webkit-flex;
   display: flex;
-  align-items: center;
+  
 }
 .main-nav{
   list-style: none;
@@ -42,7 +42,8 @@ nav{
   margin-right: 100px;
   margin: 0;
   padding: 0;
-  background: #15549a;;
+  background: #15549a;
+  text-align: left;
 }
 .banner {
   background: url("../img/header-bg.jpg");
@@ -106,6 +107,7 @@ nav{
   display: flex;
   width: 100%;
   height: auto;
+  align-items: center;
 }
 .menu {
   -webkit-box-flex: 2;
@@ -435,11 +437,11 @@ input[type="password"] {
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 100;
   left: 0;
   background-color: #15549a;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: 40px;
   transition: 0.5s;
 }
 
@@ -599,7 +601,6 @@ table th {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    text-align: center;
   }
   .logo {
     max-width: 100%;
@@ -637,20 +638,11 @@ table th {
   }
 }
 @media all and (max-width: 800px) {
-<<<<<<< HEAD
-  .banner-text-items p {
-    padding-right: 0; 
-  }
-  .testimonial-widget{
-    min-height: 100%;
-=======
   .testimonial-widget{
     min-height: 0%;
->>>>>>> cc2e0803b93fc46fe5adca199336f9acccf3b03c
   }
   .main-nav{
     display: block;
-    text-align: center;
   }
   .main-nav a {
     padding: 5px;
@@ -661,7 +653,6 @@ table th {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    text-align: center;
   }
   .menu ul {
     -webkit-box-orient: vertical;
