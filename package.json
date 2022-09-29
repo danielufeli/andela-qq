@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/runtime": "^7.4.4",
-    "@hapi/joi": "^15.0.0",
+    "@hapi/joi": "^15.1.1",
     "airbnb-browser-shims": "^3.2.1",
     "app-root-path": "^2.2.1",
     "babel-polyfill": "^6.26.0",
